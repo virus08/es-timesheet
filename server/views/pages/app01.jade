@@ -1,0 +1,26 @@
+extends ../layouts/layout01
+
+block custom_style
+	// style(type='text/css')
+		body {padding-top: 40px;}
+		.color-red {color: red;}
+		.color-blue {color: blue;} 
+
+block navbar
+	ul#side-menu.nav
+		profile(source="/api/profiles/#{user.id}")
+		each userapp,index in userapps
+			app-menus(id=index,app_icont=userapp.icont ,app_href= userapp.href,app_name=userapp.name, :menus=JSON.stringify(userapp.menus))
+				
+block content-header
+	header-layout
+		welcome-message Welcome to #{site.name}
+		logout
+		
+
+block content-body
+	div.gray-bg.dashbard-1
+		router-view
+		c-form(f_id="newjob-form#{user.id}",f_name="Add New Job",f_detail="This in test to deploy",profile="/api/profiles/#{user.id}")
+		
+		

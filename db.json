@@ -1,0 +1,43 @@
+{
+  "ids": {
+    "user": 3,
+    "accessToken": 1,
+    "userCredential": 1,
+    "userIdentity": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "profiles": 3,
+    "timesheet": 6,
+    "brand": 5
+  },
+  "models": {
+    "user": {
+      "1": "{\"username\":\"wanchai\",\"password\":\"$2a$10$eZFX1BgnKt6rRrMYfzV2euV3aCrtFr5r5Ao.chP4b8MmelMzCLp1O\",\"email\":\"wanchai@vstecs.co.th\",\"emailVerified\":true,\"id\":1}",
+      "2": "{\"username\":\"user1\",\"password\":\"$2a$10$rHhZ5dGhFHABsYZIJLCanO8y0MRd6zN9MmKFGDm7BadidwxNs0fqu\",\"email\":\"oracle@vstecs.co.th\",\"emailVerified\":true,\"id\":2}"
+    },
+    "accessToken": {},
+    "userCredential": {},
+    "userIdentity": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "profiles": {
+      "1": "{\"Name\":\"Wanchai\",\"uid\":1,\"Sname\":\"Fuangmali\",\"position\":\"Pre-Sales\",\"picture\":\"img/profile_small.jpg\",\"id\":1}",
+      "2": "{\"Name\":\"Oracle\",\"uid\":2,\"Sname\":\"Hotman\",\"position\":\"Pre-Sales\",\"picture\":\"img/profile_small.jpg\",\"id\":2}"
+    },
+    "timesheet": {
+      "1": "{\"id\":1,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_arear\":\"\",\"Base_Technology\":[\"VM Infrastructure\",\"Network\"],\"UID\":1,\"Job_Header\":\"งานใหม่\",\"Job_detail\":\"ใหม่มากๆ\",\"create_date\":\"2017-10-23T10:04:19.896Z\",\"Job_date\":\"2017-10-24T00:00:00.000Z\",\"modify_date\":\"2017-10-24T03:29:48.727Z\",\"Job_Hours\":1,\"Job_progress\":30,\"contract\":[\"aaa\"],\"Job_status\":\"On Progress\",\"remark\":[\"0\"]}",
+      "2": "{\"id\":2,\"Name_Surname\":\"Oracle Hotman\",\"Job_Type\":\"Comply\",\"Job_arear\":\"\",\"Base_Technology\":[\"Network\",\"Security\"],\"UID\":2,\"Job_Header\":\"sdfgdfg\",\"Job_detail\":\"sdfgdfg\",\"create_date\":\"2017-10-23T10:34:34.568Z\",\"Job_date\":\"2017-10-27T00:00:00.000Z\",\"modify_date\":\"2017-10-23T10:35:07.229Z\",\"Job_Hours\":1,\"Job_progress\":100,\"contract\":[\"sdf\"],\"Job_status\":\"Completed\",\"remark\":[\"0\"]}",
+      "3": "{\"id\":3,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Self POC by VST ECS\",\"Job_arear\":\"\",\"Base_Technology\":[\"Cloud\"],\"UID\":1,\"Job_Header\":\"test1\",\"Job_detail\":\"test\",\"create_date\":\"2017-10-24T06:34:27.979Z\",\"Job_date\":\"2017-10-25T00:00:00.000Z\",\"modify_date\":\"2017-10-24T06:40:22.327Z\",\"Job_Hours\":1,\"Job_progress\":50,\"contract\":[\"test\"],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"ARISTA\"]}",
+      "4": "{\"id\":4,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"POC with vServe Plus\",\"Job_arear\":\"\",\"Base_Technology\":[\"VM Infrastructure\",\"Network\",\"Security\"],\"UID\":1,\"Job_Header\":\"test3\",\"Job_detail\":\"test1\",\"create_date\":\"2017-10-24T06:36:35.818Z\",\"Job_date\":\"2017-10-19T00:00:00.000Z\",\"modify_date\":\"2017-10-24T06:40:33.533Z\",\"Job_Hours\":1,\"Job_progress\":11,\"contract\":[\"test1\"],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Symantec\",\"Acronis\",\"ARISTA\"]}",
+      "5": "{\"id\":5,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Solution\",\"Job_arear\":\"\",\"Base_Technology\":[\"Cloud\",\"Security\",\"Peripheral\"],\"UID\":1,\"Job_Header\":\"test1\",\"Job_detail\":\"test2'''\\\"\\\"\",\"create_date\":\"2017-10-24T07:13:33.180Z\",\"Job_date\":\"2017-10-28T00:00:00.000Z\",\"modify_date\":\"2017-10-24T08:52:10.832Z\",\"Job_Hours\":3,\"Job_progress\":50,\"contract\":[\"test\"],\"Job_status\":\"On Progress\",\"remark\":[\"0\"],\"Brands\":[\"Symantec\",\"ARISTA\"]}"
+    },
+    "brand": {
+      "1": "{\"Name\":\"Symantec\",\"id\":1}",
+      "2": "{\"Name\":\"Acronis\",\"id\":2}",
+      "3": "{\"Name\":\"ARISTA\",\"id\":3}",
+      "4": "{\"Name\":\"Bluecoat\",\"id\":4}"
+    }
+  }
+}

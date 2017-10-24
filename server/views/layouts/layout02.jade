@@ -1,0 +1,25 @@
+doctype html
+html(lang="en-us")
+	head
+		include layout01/meta	
+		- if (typeof(site) !== 'undefined') {
+			title=site.title
+			include layout01/csslink
+			include layout01/custom_style
+			block custom_style
+			body
+				#wrapper
+					nav.navbar-default.navbar-static-side(role="navigation")
+						block navbar
+					#page-wrapper.gray-bg.dashbard-1
+						block content-header
+						block content-body
+						
+				include layout01/java_script1
+		- }
+		title Error
+		body 
+			#wrapper
+				p Error  
+				
+		

@@ -1,0 +1,24 @@
+extends ../layouts/login_layout
+
+block content
+ div.middle-box.text-center.loginscreen.animated.fadeInDown
+  div
+   div
+    h1.logo-name ES
+   h3 Welcome to VSTECS
+   
+   p Detail of this app bla bla.
+   p Login in. To see it in action.
+   .row
+      form(role='form', action='/auth/local', method='post')
+        .form-group
+          label(for='username') Your username
+          input#username.form-control(type='text', name='username', placeholder='Enter username')
+        .form-group
+          label(for='password') Password
+          input#password.form-control(type='password', name='password', placeholder='Password')
+        button.btn.btn-default(type='submit') Submit
+      br
+      if (messages.error)
+        p
+          span(style="color:red")= messages.error

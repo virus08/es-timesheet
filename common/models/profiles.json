@@ -1,0 +1,33 @@
+{
+  "name": "profiles",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "uid": {
+      "type": "number",
+      "required": true
+    },
+    "Sname": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "string",
+      "default": "img/001.jpg"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
