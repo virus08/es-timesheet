@@ -31,7 +31,77 @@ Vue.component('test', {
 
  */
 
+Vue.component('conf', {
+	 props: ['uid','uname'],
+	 template: 
+		 `
+		 <div class="row">
+                    <div class="panel blank-panel">
 
+                        <div class="panel-heading">
+                            <div class="panel-title m-b-md"><h4></h4></div>
+                            <div class="panel-options">
+
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-laptop"></i></a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-desktop"></i></a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-3"><i class="fa fa-signal"></i></a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-4"><i class="fa fa-bar-chart-o"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                	<div class="col-md-6">
+                						<div class="ibox float-e-margins">
+		 									<div class="ibox-title">
+                        						<h5>Change Password <small>Change Password</small></h5>
+		 										
+                    						</div>
+                    						<div class="ibox-content">
+                    							<form role="form">
+	                                    			<div class="form-group"><label>oldPassword</label> <input type="password" placeholder="Old Password" class="form-control"></div>
+	                                    			<div class="form-group"><label>New Password</label> <input type="password" placeholder="New Password" class="form-control"></div>
+	                                    			<div class="form-group"><label>Confirm Password</label> <input type="password" placeholder="Confirm Password" class="form-control"></div>
+	                                    			<div>
+	                                        			<button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Change</strong></button>
+	                                        			<div><br>{{user}}{{uname}}{{uid}}</div>
+	                                    			</div>
+                                				</form>
+                           					</div>
+		 								</div>
+                    				</div>
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                	aaa
+                                </div>
+                                <div id="tab-3" class="tab-pane">
+                                	<strong>test3</strong>
+                                </div>
+                                <div id="tab-4" class="tab-pane">
+                                	<strong>test4</strong>
+                                </div>
+                       		</div>
+		`,
+	 data: function () {
+	    return {
+	    	user: {
+	    		username:""
+	    	}
+	    	
+	    }
+	  },
+	  methods: {
+		  getusername:function(){
+	    	   this.user.username='test';
+	       }
+	    },
+	    mounted: function () {
+	    	getusername();
+	    }
+	})
 
 Vue.component('BIlink', {
 	 template: 

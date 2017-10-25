@@ -107,9 +107,9 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 		component: { 
 			template: '<Timesheet1 source="/api/timesheets" uid='+req.user.id+'></test1>' 
 			}},{ 
-		path: '/Timesheet',
+		path: '/conf',
 		component: { 
-			template: '<iframe width="680" height="510" src="https://app.powerbi.com/view?r=eyJrIjoiYmQ2MDU1ODktYWNhOC00YTM2LTgxODAtNmM2M2JkNDEzZGU0IiwidCI6Ijc3YjRjZmU3LTQ5NGEtNDY5MC1iZGI3LWMzNjVhMjBkZGZiMyIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>' 
+			template: '<conf uid='+req.user.id+' uname='+req.user.username+' ></conf>' 
 		}}
 		],
 		userapps:[
@@ -131,8 +131,8 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 });
 
 
-app.get('/auth/account', ensureLoggedIn('/local'), function(req, res, next) {
-  res.render('pages/app01', {
+app.get('/reset', function(req, res, next) {
+  res.render('pages/reset', {
     user: req.user,
     url: req.url,
   });
@@ -145,59 +145,14 @@ app.get('/local', function(req, res, next) {
   });
 });
 
-app.get('/ldap', function(req, res, next) {
-  res.render('pages/ldap', {
-    user: req.user,
-    url: req.url,
-  });
-});
 
-app.get('/signup', function(req, res, next) {
-  res.render('pages/signup', {
-    user: req.user,
-    url: req.url,
-  });
-});
-
-app.post('/signup', function(req, res, next) {
-  var User = app.models.user;
-
-  var newUser = {};
-  newUser.email = req.body.email.toLowerCase();
-  newUser.username = req.body.username.trim();
-  newUser.password = req.body.password;
-
-  User.create(newUser, function(err, user) {
-    if (err) {
-      req.flash('error', err.message);
-      return res.redirect('back');
-    } else {
-      // Passport exposes a login() function on req (also aliased as logIn())
-      // that can be used to establish a login session. This function is
-      // primarily used when users sign up, during which req.login() can
-      // be invoked to log in the newly registered user.
-      req.login(user, function(err) {
-        if (err) {
-          req.flash('error', err.message);
-          return res.redirect('back');
-        }
-        return res.redirect('/auth/account');
-      });
-    }
-  });
-});
-
-app.get('/login', function(req, res, next) {
-  res.render('pages/login', {
-    user: req.user,
-    url: req.url,
-  });
-});
 
 app.get('/auth/logout', function(req, res, next) {
   req.logout();
   res.redirect('/');
 });
+
+
 
 app.start = function() {
   // start the web server
