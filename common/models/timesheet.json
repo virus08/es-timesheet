@@ -14,7 +14,7 @@
       "type": "string",
       "required": true
     },
-    "Job_arear": {
+    "Job_SOW": {
       "type": "string"
     },
     "Base_Technology": {

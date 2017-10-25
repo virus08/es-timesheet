@@ -72,5 +72,9 @@
   "brand": {
     "dataSource": "db",
     "public": true
+  },
+  "sow": {
+    "dataSource": "db",
+    "public": true
   }
 }
