@@ -8,7 +8,7 @@
     "RoleMapping": 1,
     "Role": 1,
     "profiles": 22,
-    "timesheet": 12,
+    "timesheet": 15,
     "brand": 26,
     "jobtype": 14,
     "tech": 8,
@@ -71,7 +71,10 @@
       "21": "{\"Name\":\"Puttipong\",\"uid\":21,\"Sname\":\"Singkharach\",\"position\":\"Pre-Sales\",\"picture\":\"img/profile_small.jpg\",\"id\":21}"
     },
     "timesheet": {
-      "10": "{\"id\":10,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"POC with vServe Plus\",\"Job_SOW\":\"POC Professional Report\",\"Base_Technology\":[\"VM Infrastructure\",\"Network\"],\"UID\":1,\"Job_Header\":\"งานใหญ่\",\"Job_detail\":\"ใหญ่มากๆ\",\"create_date\":\"2017-10-25T01:29:46.307Z\",\"Job_date\":\"2017-10-26T00:00:00.000Z\",\"modify_date\":\"2017-10-25T02:39:10.796Z\",\"Job_Hours\":8,\"Job_progress\":100,\"contract\":[\"test123 sawatdee\"],\"Job_status\":\"Completed\",\"remark\":[\"0\"],\"Brands\":[\"Acronis\",\"Bluecoat\"],\"Completed_date\":\"2017-10-25T02:39:10.796Z\",\"project\":\"Test Project\"}"
+      "10": "{\"id\":10,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"POC with vServe Plus\",\"Job_SOW\":\"POC Professional Report\",\"Base_Technology\":[\"VM Infrastructure\",\"Network\"],\"UID\":1,\"Job_Header\":\"งานใหญ่\",\"Job_detail\":\"ใหญ่มากๆ\",\"create_date\":\"2017-10-25T01:29:46.307Z\",\"Job_date\":\"2017-10-26T00:00:00.000Z\",\"modify_date\":\"2017-10-25T02:39:10.796Z\",\"Job_Hours\":8,\"Job_progress\":100,\"contract\":[\"test123 sawatdee\"],\"Job_status\":\"Completed\",\"remark\":[\"0\"],\"Brands\":[\"Acronis\",\"Bluecoat\"],\"Completed_date\":\"2017-10-25T02:39:10.796Z\",\"project\":\"Test Project\"}",
+      "12": "{\"id\":12,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Trainer\",\"Job_SOW\":\"Trainer course\",\"Base_Technology\":[\"Network\"],\"UID\":1,\"Job_Header\":\"test1 \",\"Job_detail\":\"Detail\",\"create_date\":\"2017-10-27T02:39:59.715Z\",\"Job_date\":\"2017-10-27T00:00:00.000Z\",\"modify_date\":\"2017-10-27T02:41:42.832Z\",\"Job_Hours\":8,\"Job_progress\":10,\"contract\":[\"aaa\"],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"]}",
+      "13": "{\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Present\",\"Job_SOW\":\"\",\"Base_Technology\":[\"VM Infrastructure\",\"Security\"],\"UID\":1,\"Job_Header\":\"www\",\"Job_detail\":\"w1\",\"create_date\":\"2017-10-27T04:33:08.885Z\",\"Job_date\":\"2017-10-31T00:00:00.000Z\",\"modify_date\":\"2017-10-27T04:33:08.885Z\",\"Job_Hours\":0,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"],\"id\":13}",
+      "14": "{\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Learning Skill\",\"Job_SOW\":\"\",\"Base_Technology\":[\"Network\"],\"UID\":1,\"Job_Header\":\"qqq\",\"Job_detail\":\"qqq\",\"create_date\":\"2017-10-27T04:39:49.842Z\",\"Job_date\":\"2017-10-06T00:00:00.000Z\",\"modify_date\":\"2017-10-27T04:39:49.842Z\",\"Job_Hours\":0,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"],\"id\":14}"
     },
     "brand": {
       "1": "{\"Name\":\"Acronis\",\"emailVerified\":true,\"id\":1}",
