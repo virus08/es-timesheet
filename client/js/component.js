@@ -531,11 +531,9 @@ Vue.component('Timesheet1', {
                         </div>
                         <div class="ibox-content">
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped table-bordered table-hover dataTables">
                                     <thead>
                                     <tr>
-
-                                        <th></th>
                                         <th>Job Name</th>
                                         <th>Type</th>
                                         <th>Hours</th>
@@ -543,29 +541,34 @@ Vue.component('Timesheet1', {
                                         <th>Task</th>
                                         <th>Progress</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="data in list" >
-                                        <td></td>
-                                        <td>{{data.Job_Header}}</td>
-                                        <td>{{data.Job_Type}}</td>
-                                        <td>{{data.Job_Hours}}</td>
-                                        <td>{{data.Job_date | formatDate}}</td>
-                                        <td><circle-slider :side="20" :progress-width="10" v-model="data.Job_progress"></circle-slider></td>
-                                        <td>{{data.Job_progress}} %</td>
-                                     	<td>{{data.Job_status}}</td>
-                                        <td>
-                                        	<div class="row">
-                                        		<edit name=edit :data=data> </edit>
-                                        		<delete name=delete :data=data> </delete>
-                                        	</div>
-                                        </td>
-                                    </tr>
+                                    <tr v-for="data in list">
+										<td>{{data.Job_Header}}</td>
+										<td>{{data.Job_Type}}</td>
+										<td>{{data.Job_Hours}}</td>
+										<td>{{data.Job_date | formatDate}}</td>
+										<td><circle-slider :side="20" :progress-width="10" v-model="data.Job_progress"></circle-slider></td>
+										<td>{{data.Job_progress}} %</td>
+										<td>{{data.Job_status}}</td>
+									</tr>
                                     </tbody>
+                                    <tfoot>
+	                                    <tr>
+	                                        <th>Job Name</th>
+	                                        <th>Type</th>
+	                                        <th>Hours</th>
+	                                        <th>Deadline </th>
+	                                        <th>Task</th>
+	                                        <th>Progress</th>
+	                                        <th>Status</th>
+	                                        
+	                                    </tr>
+                                    </tfoot>
                                 </table>
-                                <New_Job name='#newjob-form' :UID=uid></New_Job>
+		 						{{dataset}}
                             </div>
                         </div>
                     </div>
@@ -592,7 +595,24 @@ Vue.component('Timesheet1', {
 	    },
 	    mounted: function () {
 	        this.getUsers();
-	    }
+	    },
+	    created: function(){
+	    	var dataSet = [{"name":"Tiger Nixon","position":"System Architect","salary":"$3,120","start_date": "2011/04/25","office":"Edinburgh","extn":"5421"},{"name":"Garrett Winters","position":"Director","salary":"$5,300","start_date": "2011/07/25","office":"Edinburgh","extn":"8422"}];
+	    	this.getUsers();
+	    	var dataSet = this.list
+	    	$(document).ready(function() {
+	    		$('.dataTables').dataTable({
+	    			responsive: true,
+	    			data: dataSet,
+	    			columns: [
+	    		        { data: 'Name_Surname' },
+	    		        { data: 'name' },
+	    		        { data: 'salary' },
+	    		        { data: 'office' }
+	    		    ]
+	    		});
+	    	});
+	      }
 	})
 
 
