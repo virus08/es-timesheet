@@ -103,9 +103,9 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 		component: { 
 			template: '<Timesheet source="/api/timesheets" uid='+req.user.id+'></test1>' 
 		}},{ 
-		path: '/Jobend',
+		path: '/all',
 		component: { 
-			template: '<Timesheet1 source="/api/timesheets" uid='+req.user.id+'></test1>' 
+			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'></test1>' 
 			}},{ 
 		path: '/conf',
 		component: { 
@@ -120,10 +120,10 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 				menus:[
 				{
 					href:'#/',
-					label:'Timesheet'
+					label:'Active Timesheet'
 				},{
-					href:'#/Jobend',
-					label:'Job End'
+					href:'#/all',
+					label:'All Timesheet'
 				}],
 			}
 		]
