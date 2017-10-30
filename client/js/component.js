@@ -33,7 +33,7 @@ Vue.component('test', {
 
 
 Vue.component('alltables', {
-	 props: ['source'],
+	 props: ['source','uid'],
 	 template: `
 		<div>
 		 	<form id="search">
@@ -56,7 +56,11 @@ Vue.component('alltables', {
 	  methods: {
 		  getUsers: function(){
 	            this.$http.get(this.source).then(function(response){
-	                this.list = response.data;
+					var uid=parseInt(this.uid);
+					
+	                this.list = response.data.filter(function (n){
+					  return n.UID===uid ;
+				  });
 	            }, function(error){
 	                console.log(error.statusText);
 	            });
@@ -346,7 +350,7 @@ Vue.component('allTimesheet', {
 		 			</div>
 		 			<div class="ibox-content">
 		 				<div class="table-responsive">
-		 					<alltables source='/api/timesheets'></alltables>
+		 					<alltables :uid='uid' source='/api/timesheets'></alltables>
 		 				<div>
                     </div>
 		 		</div>                 

@@ -1,13 +1,19 @@
 {
-  "name": "user_profile",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {},
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+	"name": "user_profile",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		
+	},
+	"validations": [],
+	"relations": {
+		
+	},
+	"acls": [],
+	"methods": {
+		
+	}
 }
