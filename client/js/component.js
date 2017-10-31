@@ -436,18 +436,18 @@ Vue.component('edit', {
 		 						<div class="col-sm-6">
 		 							<div class="form-group">
 			 							<label>Scope Of Works</label> 
-		 								<select class="form-control m-b" v-model="opt" v-on:change='data.Job_Hours=opt.Hours;data.Job_SOW=opt.Name' :disabled="data.Job_status == 'Completed'">
+		 								<select class="form-control m-b" v-model="opt" v-on:change='data.Job_Hours=opt.Hours;data.Job_SOW=opt.Name' :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
 		 									<option selected >{{data.Job_SOW}}</option>
 	                                        <option v-for="option in sow" :value=option v-if='option.GroupName=== data.Job_Type'>{{option.Name}}</option>                                       
 	                                    </select>
-			 							<label>Job Detail</label> <input type="text" v-model="data.Job_detail" placeholder="รายละเอียด" class="form-control" :disabled="data.Job_status == 'Completed'">
-			 							<label>Job Progress</label> <input type="number" v-model="data.Job_progress" placeholder="ความคืบหน้า" class="form-control" :disabled="data.Job_status == 'Completed'">
+			 							<label>Job Detail</label> <input type="text" v-model="data.Job_detail" placeholder="รายละเอียด" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
+			 							<label>Job Progress</label> <input type="number" v-model="data.Job_progress" placeholder="ความคืบหน้า" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
 			 							<label>Job status</label> 
-			 							<select class="form-control m-b" v-model="data.Job_status" :disabled="data.Job_status == 'Completed'">
+			 							<select class="form-control m-b" v-model="data.Job_status" >
 	                                        <option v-for="option in jobstatus">{{option}}</option>                                       
 	                                    </select>
 	                                    <label>Project Task Tack</label> 
-			 							<select class="form-control m-b" v-model="data.project" >
+			 							<select class="form-control m-b" v-model="data.project" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'">
 	                                        <option v-for="option in project">{{option.Name}}</option>                                       
 	                                    </select>
 		 							</div>
