@@ -1,80 +1,80 @@
 {
-  "_meta": {
-    "sources": [
-      "../common/models",
-      "./models",
-      "./node_modules/loopback-component-passport/lib/models"
-    ]
-  },
-  "Email": {
-    "dataSource": "myEmailDataSource"
-  },
-  "user": {
-    "dataSource": "db",
-    "public": true
-  },
-  "accessToken": {
-    "dataSource": "db",
-    "public": false
-  },
-  "userCredential": {
-    "dataSource": "db",
-    "public": false
-  },
-  "userIdentity": {
-    "dataSource": "db",
-    "public": false
-  },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
-  },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false
-  },
-  "Role": {
-    "dataSource": "db",
-    "public": false
-  },
-  "profiles": {
-    "dataSource": "db",
-    "public": true
-  },
-  "timesheet": {
-    "dataSource": "db",
-    "public": true
-  },
-  "product": {
-    "dataSource": "db",
-    "public": true
-  },
-  "jobtype": {
-    "dataSource": "db",
-    "public": true
-  },
-  "job_area": {
-    "dataSource": "db",
-    "public": true
-  },
-  "job_status": {
-    "dataSource": "db",
-    "public": true
-  },
-  "project": {
-    "dataSource": "db",
-    "public": true
-  },
-  "tech": {
-    "dataSource": "db",
-    "public": true
-  },
-  "brand": {
-    "dataSource": "db",
-    "public": true
-  },
-  "sow": {
-    "dataSource": "db",
-    "public": true
-  }
+	"_meta": {
+		"sources": [
+			"../common/models",
+			"./models",
+			"./node_modules/loopback-component-passport/lib/models"
+		]
+	},
+	"Email": {
+		"dataSource": "myEmailDataSource"
+	},
+	"user": {
+		"dataSource": "db",
+		"public": true
+	},
+	"accessToken": {
+		"dataSource": "db",
+		"public": false
+	},
+	"userCredential": {
+		"dataSource": "db",
+		"public": false
+	},
+	"userIdentity": {
+		"dataSource": "db",
+		"public": false
+	},
+	"ACL": {
+		"dataSource": "db",
+		"public": false
+	},
+	"RoleMapping": {
+		"dataSource": "db",
+		"public": false
+	},
+	"Role": {
+		"dataSource": "db",
+		"public": false
+	},
+	"profiles": {
+		"dataSource": "db",
+		"public": true
+	},
+	"timesheet": {
+		"dataSource": "db",
+		"public": true
+	},
+	"product": {
+		"dataSource": "db",
+		"public": true
+	},
+	"jobtype": {
+		"dataSource": "db",
+		"public": true
+	},
+	"job_area": {
+		"dataSource": "db",
+		"public": true
+	},
+	"job_status": {
+		"dataSource": "db",
+		"public": true
+	},
+	"project": {
+		"dataSource": "db",
+		"public": true
+	},
+	"tech": {
+		"dataSource": "db",
+		"public": true
+	},
+	"brand": {
+		"dataSource": "db",
+		"public": true
+	},
+	"sow": {
+		"dataSource": "db",
+		"public": true
+	}
 }

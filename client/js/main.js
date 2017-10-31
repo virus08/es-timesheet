@@ -11,3 +11,5 @@ const app = new Vue({
 	    circleslider: VueCircleSlider.VueCircleSlider
 	  }
 }).$mount('#wrapper')
+
+

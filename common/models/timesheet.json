@@ -1,77 +1,81 @@
 {
-  "name": "timesheet",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "Name_Surname": {
-      "type": "string",
-      "required": true
-    },
-    "Job_Type": {
-      "type": "string",
-      "required": true
-    },
-    "Job_SOW": {
-      "type": "string"
-    },
-    "Base_Technology": {
-      "type": [
-        "string"
-      ]
-    },
-    "UID": {
-      "type": "number",
-      "required": true
-    },
-    "Job_Header": {
-      "type": "string",
-      "required": true
-    },
-    "Job_detail": {
-      "type": "string"
-    },
-    "create_date": {
-      "type": "date",
-      "required": true
-    },
-    "Job_date": {
-      "type": "date"
-    },
-    "modify_date": {
-      "type": "date"
-    },
-    "Job_Hours": {
-      "type": "number"
-    },
-    "Job_progress": {
-      "type": "number"
-    },
-    "contract": {
-      "type": [
-        "string"
-      ]
-    },
-    "Job_status": {
-      "type": "string",
-      "required": true,
-      "default": "Open"
-    },
-    "remark": {
-      "type": [
-        "string"
-      ]
-    },
-    "Brands": {
-      "type": [
-        "string"
-      ]
-    }
-  },
-  "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+	"name": "timesheet",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+	"properties": {
+		"Name_Surname": {
+			"type": "string",
+			"required": true
+		},
+		"Job_Type": {
+			"type": "string",
+			"required": true
+		},
+		"Job_SOW": {
+			"type": "string"
+		},
+		"Base_Technology": {
+			"type": [
+				"string"
+			]
+		},
+		"UID": {
+			"type": "number",
+			"required": true
+		},
+		"Job_Header": {
+			"type": "string",
+			"required": true
+		},
+		"Job_detail": {
+			"type": "string"
+		},
+		"create_date": {
+			"type": "date",
+			"required": true
+		},
+		"Job_date": {
+			"type": "date"
+		},
+		"modify_date": {
+			"type": "date"
+		},
+		"Job_Hours": {
+			"type": "number"
+		},
+		"Job_progress": {
+			"type": "number"
+		},
+		"contract": {
+			"type": [
+				"string"
+			]
+		},
+		"Job_status": {
+			"type": "string",
+			"required": true,
+			"default": "Open"
+		},
+		"remark": {
+			"type": [
+				"string"
+			]
+		},
+		"Brands": {
+			"type": [
+				"string"
+			]
+		}
+	},
+	"validations": [],
+	"relations": {
+		
+	},
+	"acls": [],
+	"methods": {
+		
+	}
 }
