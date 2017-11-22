@@ -34,7 +34,7 @@
 	},
 	"files": {
 		"loopback#static": {
-			"params": "$!../client"
+			"params": "$!../public/web"
 		}
 	},
 	"final": {
