@@ -1,0 +1,48 @@
+doctype html
+html(lang="en-us")
+	head
+		meta(charset='UTF-8') 
+		meta(http-equiv='X-UA-Compatible',content='IE=edge')
+		meta(name='viewport',content='width=device-width, initial-scale=1')
+		title=site.title
+		link(rel='stylesheet', href='css/alta/4.0.0/web/alta.css', id='css')
+		link(rel='stylesheet', href='css/demo-alta-site-min.css', type='text/css')
+		link(rel='stylesheet', href='css/app.css', type='text/css')
+	body.oj-web-applayout-body
+		//Template for rendering navigation items shared between nav bar and nav list
+		script(type="text/html")#navTemplate.
+			<li><a href="#">
+			<span data-bind="css: $data['iconClass']"></span>
+			<!-- ko text: $data['name'] --> <!--/ko-->
+			</a></li>
+		#globalBody.oj-web-applayout-page
+			header(role="banner").oj-web-applayout-header
+				.oj-web-applayout-max-width.oj-flex-bar.oj-sm-align-items-center
+					.oj-flex-bar-middle.oj-sm-align-items-baseline
+						img(src="css/images/vstecs.jpg",alt="VSTECS Logo",width="85.1",height="41.7")
+						//h1.oj-sm-only-hide.oj-web-applayout-header-title(title="Application Name",data-bind="text: appName")
+						// span#results(data-bind='text: selectedMenuItem')
+					.oj-flex-bar-end
+						oj-toolbar
+							oj-menu-button#userMenu(display="[[smScreen() ? 'icons' : 'all']]" chroming="half")
+								span #{user.email}
+								span(slot="endIcon",data-bind="css: smScreen() ? 'oj-icon demo-appheader-avatar' : 'oj-component-icon oj-button-menu-dropdown-icon'")
+								oj-menu#menu1(slot="menu" style="display:none" on-oj-action="[[menuItemAction]]")
+									oj-option#Preferences(value="#") Preferences
+									oj-option ---
+									oj-option#logout(value="/auth/logout") Logout
+				div(role="navigation").oj-web-applayout-max-width.oj-web-applayout-navbar
+					oj-navigation-list(data="[[navDataSource]]",edge="top",item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('navTemplate', true)]]",selection="{{router.stateId}}").oj-sm-only-hide.oj-md-condense.oj-md-justify-content-flex-end
+			div(role="main",data-bind="ojModule: router.moduleConfig").oj-web-applayout-max-width.oj-web-applayout-content
+			footer(role="contentinfo").oj-web-applayout-footer
+				div.oj-web-applayout-footer-item.oj-web-applayout-max-width
+					ul
+						// ko foreach: footerLinks
+						li
+							a(data-bind="text : name, attr : {id: linkId, href : linkTarget}")
+						// /ko
+				div.oj-web-applayout-footer-item.oj-web-applayout-max-width.oj-text-secondary-color.oj-text-sm Copyright © 2017 VSTECS (THAILAND) CO.,LTD.
+		script.
+			var GlobalVariable=#{user.id};
+		script(src='js/libs/require/require.js',type='text/javascript')
+		script(src='js/main.js',type='text/javascript')

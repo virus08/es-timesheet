@@ -91,7 +91,7 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 //app.get('/', function(req, res, next) {
 app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
-  res.render('pages/app01', {user:
+  res.render('pages/jet', {user:
     req.user,
     url: req.url,
     site:{
