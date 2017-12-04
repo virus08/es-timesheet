@@ -1,0 +1,7 @@
+data-table:not(.oj-complete){
+  visibility: hidden;
+}
+
+data-table{
+
+}

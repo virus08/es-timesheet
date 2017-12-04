@@ -1,5 +1,5 @@
 
-define(['ojs/ojcore', 'knockout', 'jquery','jet-composites/my-chart/loader'],
+define(['ojs/ojcore', 'knockout', 'jquery','jet-composites/filter-table/loader','jet-composites/edit-comp/loader'],
  function(oj, ko, $) {
   
     function ProjectViewModel() {

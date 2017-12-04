@@ -1,0 +1,7 @@
+edit-comp:not(.oj-complete){
+  visibility: hidden;
+}
+
+edit-comp{
+
+}

@@ -65,9 +65,9 @@ define(
 
 				// Header
 				// Application Name used in Branding Area
-				self.appName = ko.observable("App Name");
+				//self.appName = ko.observable("App Name");
 				// User Info used in Global Navigation area
-				self.userLogin = ko.observable("john.hancock@oracle.com");
+				//self.userLogin = ko.observable("john.hancock@oracle.com");
 
 				// Footer
 				function footerLink(name, id, linkTarget) {
@@ -75,6 +75,9 @@ define(
 					this.linkId = id;
 					this.linkTarget = linkTarget;
 				}
+				self.menuItemAction = function( event ) {
+			         window.location.href=event.target.value;
+			     };
 				self.footerLinks = ko
 						.observableArray([
 								new footerLink('About Oracle', 'aboutOracle',

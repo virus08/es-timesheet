@@ -1,0 +1,21 @@
+{
+  "name": "data-table",
+  "displayName": "data-table",
+  "description": "Describe your component here",
+  "version": "1.0.0",
+  "jetVersion": "^4.0.0",
+  "properties": {
+  	"userid":{
+  		"type":"number"
+  	}
+  },
+  "methods": {
+
+  }, 
+  "events": {
+
+  }, 
+  "slots": {
+
+  }
+}
