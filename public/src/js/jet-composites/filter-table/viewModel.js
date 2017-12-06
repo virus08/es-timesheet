@@ -15,7 +15,6 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/o
 		self.composite = context.element;
 		self.userid = window.GlobalVariable;
 	    
-	    
 		self.status = ko.observableArray(["Open","On Progress"]);
 		var selected = $( ".selector" ).ojTable("option", "selection");
 		context.props.then(function(propertyMap) {

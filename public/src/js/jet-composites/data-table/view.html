@@ -1,24 +1,44 @@
-        <div id="pagingControlDemo" style="width: 1px; min-width: 100%;">
-           <oj-table id="table" aria-label="Timesheet Table"
-                      data='[[pagingDatasource]]'
-                      columns='[[columnArray]]' 
-                      style='width: 100%;'>
-                <oj-paging-control id="paging" data='[[pagingDatasource]]' page-size='8' slot='bottom'>
-                </oj-paging-control>
-            </oj-table>
-        </div>
-        <script type="text/html" id="oracle_link_hdr">
-   			<th style="padding-left: 5px; padding-right: 5px;">
-      			Oracle Link
-   			</th>
-		</script>
-		<script type="text/html" id="oracle_link">
-    		<td>
-        		<a href="http://www.oracle.com">Oracle</a>
-    		</td>
-		</script>
-
-        <!-- 
-        <span id="results" data-bind='text: userid')></span>
-        <span id="results" data-bind='text: data')></span>
-         -->
+<!-- inner offcanvas wrapper -->
+<div class="oj-offcanvas-outer-wrapper" style="solid #d6dfe6; height:100%">
+	<!-- inner start offcanvas -->
+	<div id="iDrawer" class="oj-offcanvas-top oj-panel oj-panel-alt5" style="height: 100px">
+		<div>
+			<oj-label for="multiSelect">Select Status</oj-label>
+          	<oj-select-many id="multiSelect" value={{status}} on-value-changed="[[statusChanged]]" >
+            	<oj-option value="Open">Open</oj-option>
+            	<oj-option value="On Progress">On Progress</oj-option>
+            	<oj-option value="Completed">Completed</oj-option>
+            	<oj-option value="Cancel">Cancel</oj-option>
+          	</oj-select-many>
+		</div>
+        <oj-button display='icons' chroming='half' on-click='[[closeInner]]' class="oj-panel-remove-button">
+			<span slot='endIcon' class='oj-panel-remove-icon'></span> Close
+		</oj-button>
+	</div>
+	<div id="iMain" class="demo-main-content">
+		<div class="oj-flex-bar">
+            <div class="oj-flex-bar-start">
+            	<div><span data-bind="text:headertext" style="font-weight:bold;font-size:200%;" > </span> <span> Status (</span><span data-bind="text:status" style="font-weight:bold;font-size:70%;"></span><span>)</<span></span>	 </div>
+            </div>
+            <div class="oj-flex-bar-end">
+            	<div>
+            		<oj-button display='icons' chroming='half' on-click='[[toggleInner]]'>
+						<span slot='startIcon' class='oj-fwk-icon-hamburger oj-fwk-icon'></span>Configure Table
+					</oj-button>
+				</div>
+			</div>
+		</div>
+		<div class="oj-flex oj-flex-items-pad">
+    		<div class="oj-flex-item">
+    	        <div id="pagingControlDemo" style="width: 1px; min-width: 100%;">
+					<oj-table id="table" aria-label="Timesheet Table"
+						data='[[pagingDatasource]]'
+						columns='[[columntable]]' 
+						style='width: 100%;'>
+						<oj-paging-control id="paging" data='[[pagingDatasource]]' page-size='8' slot='bottom'></oj-paging-control>
+            		</oj-table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

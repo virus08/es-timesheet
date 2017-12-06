@@ -5,6 +5,9 @@
   "version": "1.0.0",
   "jetVersion": "^4.0.0",
   "properties": {
+  "dataRow":{
+  		"type":"Object"
+  	}
   },
   "methods": {
 

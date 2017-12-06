@@ -1,9 +1,12 @@
 <div class="oj-hybrid-padding">
-  <h1>Timesheet Content Area</h1>
-  <div class="oj-flex oj-flex-items-pad">
-    <div class="oj-flex-item">
-    	<data-table id="Timesheet-table"></data-table>
-    </div>
-
-  </div>
+	<data-table id='Timesheet-table' 
+		my-message='Presales Timesheet' 
+		column-array={{columnarray}}>
+	</data-table>
 </div>
+
+<script type="text/html" id="Action">
+	<td>
+		<edit-comp data-row={{$context.row}}></edit-comp>
+ 	</td>
+</script>

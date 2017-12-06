@@ -7,6 +7,12 @@
   "properties": {
   	"userid":{
   		"type":"number"
+  	},
+  	"myMessage": {
+		"type": "string"
+  	},
+  	"columnArray": {
+  		"type": "Array"
   	}
   },
   "methods": {
