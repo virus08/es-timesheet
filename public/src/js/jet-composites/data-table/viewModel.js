@@ -18,10 +18,17 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 		self.columntable = [ 
 			{"headerText" : "Job name","field" : "Job_Header"}, 
 			{"headerText" : "Job type","field" : "Job_Type"},
-			{"headerText" : "Deadline","field" : "Job_date"}, 
+			{"headerText" : "Deadline","field" : "newJob_date"}, 
 			{"headerText" : "Status","field" : "Job_status"}] 
 		
-		self.status = ko.observableArray(["Open","On Progress"]);
+		var filter;
+		filter=JSON.parse(localStorage.getItem("filter"));
+		if(filter==null){
+			localStorage.setItem("filter",JSON.stringify(["Open","On Progress"]));
+			filter=localStorage.getItem("filter");
+		}
+		self.status = ko.observableArray(filter);
+		//localStorage.setItem("filter",JSON.stringify(["Open","On Progress"]));
 		context.props.then(function(propertyMap) {
 			self.properties = propertyMap;
 			self.headertext(self.properties.myMessage);
@@ -46,6 +53,7 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 
 		self.statusChanged = function(event) {
 			var filter = event.target.value;
+			localStorage.setItem("filter",JSON.stringify(filter));
 			var len = self.data._latestValue.length;
 			var i;
 			for (i = 0; i < len ; i++) {self.data.pop();}
@@ -54,7 +62,7 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 					$.each(timesheet, function() {
 						if (this.UID == self.userid) {
 							if (this.Job_status==filter[0] ||this.Job_status== filter[1]||this.Job_status==filter[2] ||this.Job_status== filter[3]){
-								this.Job_date = new moment(this.Job_date).format('Do, MMMM YYYY');
+								this.newJob_date = new moment(this.Job_date).format('Do, MMMM YYYY');
 									self.data.push(this);
 								}
 							}
@@ -63,12 +71,19 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 		};
 		$.getJSON("http://localhost:8080/api/timesheets").then(
 				function(timesheet) {
+					var filter;
+					filter=JSON.parse(localStorage.getItem("filter"));
+					if(filter==null){
+						localStorage.setItem("filter",JSON.stringify(["Open","On Progress"]));
+						filter=localStorage.getItem("filter");
+					}
 					$.each(timesheet, function() {
 						if (this.UID == self.userid) {
-							this.Job_date = new moment(this.Job_date)
-							.format('Do, MMMM YYYY');
-							self.data.push(this);
-						}
+							if (this.Job_status==filter[0] ||this.Job_status== filter[1]||this.Job_status==filter[2] ||this.Job_status== filter[3]){
+								this.newJob_date = new moment(this.Job_date).format('Do, MMMM YYYY');
+									self.data.push(this);
+								}
+							}
 					});
 				});
 			self.pagingDatasource = new oj.PagingTableDataSource(

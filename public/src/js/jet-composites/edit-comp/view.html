@@ -46,8 +46,10 @@
 									<oj-label for="Job_date">Deadline :</oj-label>
 								</div>
 								<div class="oj-flex-item">
-									<oj-input-text id="Job_date" readonly
-										data-bind='value:data.Job_date'></oj-input-text>
+									<!--  <oj-input-text id="Job_date" 
+										data-bind='value:Job_date'></oj-input-text> -->
+									<oj-input-date id="Job_date" value={{jobdate}} > </oj-input-date>
+									
 								</div>
 							</div>
 							<div class="oj-flex">
@@ -82,9 +84,8 @@
 									<oj-label for="Job_progress">Job Progress</oj-label>
 								</div>
 								<div class="oj-flex-item">
-									<oj-slider id="Job_progress"
-										data-bind='value:data.Job_progress' max=100 min=0 step=10>
-									</oj-slider>
+									<oj-slider id="Job_progress" value="{{sli}}">
+									</oj-slider> <span id="value" data-bind="text:sli"></span>
 								</div>
 							</div>
 
@@ -110,9 +111,7 @@
 		
 	</div>
 	<div slot="footer">
-        	<oj-button id="okButton" data-bind="click: function() {
-            		document.querySelector('#EditDialog'+myid).close();
-				}">  Save
+        	<oj-button id="okButton" data-bind="click: saveButton">  Save
 			</oj-button>
 						<oj-button id="okButton" data-bind="click: function() {
             		document.querySelector('#EditDialog'+myid).close();

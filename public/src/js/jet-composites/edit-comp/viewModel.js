@@ -3,7 +3,7 @@
   The Universal Permissive License (UPL), Version 1.0
 */
 define(
-    ['ojs/ojcore', 'knockout','promise', 'jquery'], function (oj, ko, $) {
+    ['ojs/ojcore', 'knockout','promise','jquery', 'ojs/ojslider', 'ojs/ojdatetimepicker', 'ojs/ojtimezonedata'], function (oj, ko, $) {
     'use strict';
     
     function ExampleComponentModel(context) {
@@ -39,11 +39,42 @@ define(
             self.properties = propertyMap;
             self.myid= self.properties.dataRow.id
             self.data= self.properties.dataRow
+            var xdate= new Date(self.properties.dataRow.Job_date)
+            var ndate = new Date(2017, 4, 10)
+            self.jobdate =ko.observable(oj.IntlConverterUtils.dateToLocalIso(xdate));
+            self.sli= ko.observable(self.properties.dataRow.Job_progress)
+            
             //Parse your component properties here 
         });
         self.editButton = function() {
+        	
         	document.querySelector('#EditDialog'+this.myid).open();
-		}
+		};
+        self.saveButton = function() {
+        	var url = "/api/timesheets/"+this.myid;
+        	// data reload
+        	this.data.Job_progress = self.sli._latestValue
+        	this.data.Job_date = new Date(self.jobdate._latestValue)
+        	
+        	
+        	var json = JSON.stringify(this.data);
+
+        	var xhr = new XMLHttpRequest();
+        	xhr.open("PUT", url, true);
+        	xhr.setRequestHeader('Content-type','application/json');
+        	xhr.setRequestHeader('Accept','application/json');
+        	xhr.onload = function () {
+        		var res = JSON.parse(xhr.responseText);
+        		if (xhr.readyState == 4 && xhr.status == "200") {
+        			console.table(res);
+        		} else {
+        			console.error(res);
+        		}
+        	}
+        	xhr.send(json);
+        	document.querySelector('#EditDialog'+this.myid).close();
+        	window.location.reload();
+		};
         
         self.clickdelete = function(){
         	var xmlhttp = new XMLHttpRequest();
