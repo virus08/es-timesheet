@@ -20,6 +20,10 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 			{"headerText" : "Job type","field" : "Job_Type"},
 			{"headerText" : "Deadline","field" : "newJob_date"}, 
 			{"headerText" : "Status","field" : "Job_status"}] 
+        self.sowlist= [
+      	  {"GroupName": "Documentation","Name": "Request of proposal","Hours": 8,"id": 1,"emailVerified": true},
+      	  {"GroupName": "Documentation","Name": "Technical of request","Hours": 1,"id": 2,"emailVerified": true}
+      	  ];
 		
 		var filter;
 		filter=JSON.parse(localStorage.getItem("filter"));
@@ -63,12 +67,18 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 						if (this.UID == self.userid) {
 							if (this.Job_status==filter[0] ||this.Job_status== filter[1]||this.Job_status==filter[2] ||this.Job_status== filter[3]){
 								this.newJob_date = new moment(this.Job_date).format('Do, MMMM YYYY');
-									self.data.push(this);
-								}
+								this.sowlist= self.sowlist;
+								self.data.push(this);
 							}
-						});
+						}
+					});
 				});	
 		};
+		$.getJSON("http://localhost:8080/api/sows").then(
+				function(sow){
+					self.sowlist=sow;
+				}
+		);
 		$.getJSON("http://localhost:8080/api/timesheets").then(
 				function(timesheet) {
 					var filter;
@@ -81,11 +91,13 @@ define([ 'ojs/ojcore', 'knockout', 'jquery','promise', 'ojs/ojknockout', 'ojs/oj
 						if (this.UID == self.userid) {
 							if (this.Job_status==filter[0] ||this.Job_status== filter[1]||this.Job_status==filter[2] ||this.Job_status== filter[3]){
 								this.newJob_date = new moment(this.Job_date).format('Do, MMMM YYYY');
+								this.sowlist= self.sowlist.filter(list => list.GroupName==this.Job_Type );
 									self.data.push(this);
-								}
 							}
+						}
 					});
 				});
+		
 			self.pagingDatasource = new oj.PagingTableDataSource(
 				new oj.ArrayTableDataSource(self.data, {
 					idAttribute : 'Job_Header'

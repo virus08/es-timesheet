@@ -1,16 +1,10 @@
 {
-  "name": "edit-comp",
-  "displayName": "edit-comp",
+  "name": "add-job",
+  "displayName": "add-job",
   "description": "Describe your component here",
   "version": "1.0.0",
   "jetVersion": "^4.0.0",
   "properties": {
-  "dataRow":{
-  		"type":"Object"
-  	},
-  "sowList":{
-  		"type":"Object"
-  	}
   },
   "methods": {
 

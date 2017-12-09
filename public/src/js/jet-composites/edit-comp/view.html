@@ -3,7 +3,7 @@
 	<oj-dialog style="display:none;width:700px;" data-bind='attr: {id:"EditDialog"+myid,title:data.Job_Header}' >
 	<div slot="body">
 		<div align="right">
-			<span data-bind="text:'Task ID:'+myid">  </span>
+			<span data-bind="text:'Task ID:'+myid">  </span> <!--  <span data-bind="text: sowlist"> </span> -->
 			<oj-button id="okButton" data-bind="click: clickdelete">  Delete
 			</oj-button>
 		</div>
@@ -25,11 +25,18 @@
 							</div>
 							<div class="oj-flex">
 								<div class="oj-flex-item">
-									<oj-label for="Scope">Scope :</oj-label>
+									<oj-label for="Scope">Scope : </oj-label> 
 								</div>
 								<div class="oj-flex-item">
-									<oj-input-text id="Scope" readonly
-										data-bind='value:data.Job_SOW'></oj-input-text>
+									<oj-combobox-one id="Scope" value="{{nsow}}" on-value-changed=[[comboChange]]>
+									<!-- ko foreach: sowlist -->
+										<oj-option value="{{Name}}"><span data-bind="text: Name"></oj-option>
+									<!-- /ko -->
+									</oj-combobox-one>
+									
+									
+									<!-- <oj-input-text id="Scope" readonly
+										data-bind='value:nsow'></oj-input-text> -->
 								</div>
 							</div>
 							<div class="oj-flex">
@@ -38,7 +45,8 @@
 								</div>
 								<div class="oj-flex-item">
 									<oj-input-text id="Job_Hours" readonly
-										data-bind='value:data.Job_Hours'></oj-input-text>
+										data-bind='value:job_hours'>
+									</oj-input-text>
 								</div>
 							</div>
 							<div class="oj-flex">

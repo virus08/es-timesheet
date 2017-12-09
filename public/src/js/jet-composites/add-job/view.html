@@ -1,0 +1,28 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+ <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+        <div id="dialogWrapper">
+          <oj-dialog style="display:none" id="modalDialog1" title="Modal Dialog">
+            <div slot="body">
+               The dialog window can be moved, resized and closed with the 'x' icon.
+               Arbitrary content can be added to the the body and footer sections.
+            </div>
+            <div slot="footer">
+              <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialog1').close();
+                }">  OK
+              </oj-button>
+            </div>
+          </oj-dialog>
+          <oj-button id="buttonOpener"  
+            data-bind="click: function() {
+              document.querySelector('#modalDialog1').open();
+            }">
+            Add New Task
+          </oj-button>
+        </div>
+
+        
+      </div>

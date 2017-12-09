@@ -1,0 +1,7 @@
+add-job:not(.oj-complete){
+  visibility: hidden;
+}
+
+add-job{
+
+}

@@ -3,7 +3,7 @@
   The Universal Permissive License (UPL), Version 1.0
 */
 define(
-    ['ojs/ojcore', 'knockout','promise','jquery', 'ojs/ojslider', 'ojs/ojdatetimepicker', 'ojs/ojtimezonedata'], function (oj, ko, $) {
+    ['ojs/ojcore', 'knockout','promise','jquery', 'ojs/ojslider', 'ojs/ojdatetimepicker', 'ojs/ojtimezonedata','ojs/ojtable'], function (oj, ko, $) {
     'use strict';
     
     function ExampleComponentModel(context) {
@@ -34,27 +34,49 @@ define(
         self.composite = context.element;
         //self.dataRow=ko.observable()
         //Example observable
+        self.sowlist= ko.observableArray();
+        
+         
+        
+
         context.props.then(function (propertyMap) {
             //Store a reference to the properties for any later use
             self.properties = propertyMap;
-            self.myid= self.properties.dataRow.id
-            self.data= self.properties.dataRow
-            var xdate= new Date(self.properties.dataRow.Job_date)
-            var ndate = new Date(2017, 4, 10)
+            self.myid= self.properties.dataRow.id;
+            self.data= self.properties.dataRow;
+            var xdate= new Date(self.properties.dataRow.Job_date);
+            //var ndate = new Date(2017, 4, 10)
+            self.nsow=ko.observable(self.properties.dataRow.Job_SOW);
             self.jobdate =ko.observable(oj.IntlConverterUtils.dateToLocalIso(xdate));
-            self.sli= ko.observable(self.properties.dataRow.Job_progress)
-            
+            self.sli= ko.observable(self.properties.dataRow.Job_progress);
+            self.sowlist = self.properties.dataRow.sowlist
+            self.job_hours= ko.observable(self.properties.dataRow.Job_Hours);
             //Parse your component properties here 
         });
+        
+
+        
+    	
+        
         self.editButton = function() {
-        	
+
         	document.querySelector('#EditDialog'+this.myid).open();
 		};
+		self.comboChange = function( event )
+		{
+			var selested =self.sowlist.filter(sow => sow.Name==event.detail.value)
+			self.job_hours = ko.observable(selested[0].Hours)
+			var a=1;
+		};
+		
         self.saveButton = function() {
         	var url = "/api/timesheets/"+this.myid;
         	// data reload
+        	this.data.modify_date= Date.now();
+        	this.data.Job_SOW = self.nsow._latestValue
         	this.data.Job_progress = self.sli._latestValue
         	this.data.Job_date = new Date(self.jobdate._latestValue)
+        	this.data.Job_Hours = self.job_hours._latestValue
         	
         	
         	var json = JSON.stringify(this.data);
