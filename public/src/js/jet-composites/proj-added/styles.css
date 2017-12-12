@@ -1,0 +1,7 @@
+proj-added:not(.oj-complete){
+  visibility: hidden;
+}
+
+proj-added{
+
+}

@@ -1,0 +1,7 @@
+proj-edit:not(.oj-complete){
+  visibility: hidden;
+}
+
+proj-edit{
+
+}

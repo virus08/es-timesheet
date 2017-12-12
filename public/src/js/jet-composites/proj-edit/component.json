@@ -1,0 +1,18 @@
+{
+  "name": "proj-edit",
+  "displayName": "proj-edit",
+  "description": "Describe your component here",
+  "version": "1.0.0",
+  "jetVersion": "^4.0.0",
+  "properties": {
+  },
+  "methods": {
+
+  }, 
+  "events": {
+
+  }, 
+  "slots": {
+
+  }
+}

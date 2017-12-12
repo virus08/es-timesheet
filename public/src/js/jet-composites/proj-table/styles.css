@@ -1,0 +1,7 @@
+proj-table:not(.oj-complete){
+  visibility: hidden;
+}
+
+proj-table{
+
+}
