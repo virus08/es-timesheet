@@ -2,27 +2,150 @@
   Copyright (c) 2015, 2017, Oracle and/or its affiliates.
   The Universal Permissive License (UPL), Version 1.0
 -->
- <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
-        <div id="dialogWrapper">
-          <oj-dialog style="display:none" id="modalDialog1" title="Modal Dialog">
-            <div slot="body">
-               The dialog window can be moved, resized and closed with the 'x' icon.
-               Arbitrary content can be added to the the body and footer sections.
-            </div>
-            <div slot="footer">
-              <oj-button id="okButton" data-bind="click: function() {
-                  document.querySelector('#modalDialog1').close();
-                }">  OK
-              </oj-button>
-            </div>
-          </oj-dialog>
-          <oj-button id="buttonOpener"  
-            data-bind="click: function() {
-              document.querySelector('#modalDialog1').open();
+<div id="componentDemoContent">
+	<div id="dialogWrapper">
+		<oj-dialog  style="display:none;width:700px;height:520px;" id="AddNewTask" title="Task Added">
+		<div slot="body">
+			<div
+				class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline">
+				<div class="oj-flex">
+					<div id="form-container">
+						<div class="oj-form-layout">
+							<div
+								class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline oj-form-cols-labels-inline oj-form-cols-max2">
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Job_Header">Job :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-input-text id="Job_Header" value="{{newdata.Job_Header}}"></oj-input-text>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Job_detail">Detail :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-text-area id="Job_detail" value="{{newdata.Job_detail}}"></oj-text-area>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Job_date">Deadline :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-input-date id="Job_date" value="{{newdata.Job_date}}"> </oj-input-date>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Jobtype">Type :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-one id="Jobtype" value="{{newdata.Job_Type}}" on-value-changed=[[test]] >
+											<!-- ko foreach: typelist -->
+												<oj-option value="{{Name}}"><span data-bind="text: Name"></span></oj-option>
+											<!-- /ko -->
+										</oj-select-one>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Scope">Scope :</oj-label>
+									</div>
+									<div class="oj-flex-item" id="xcomboScope">
+										<select id="Scope" data-bind="ojComponent: 
+											{component: 'ojSelect', options: sowlist, 
+											value: newdata.Job_SOW,rootAttributes: {style:'max-width:20em'}}">  
+										</select>  
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Base_Technology">Technology :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-many id="Base_Technology" value="{{newdata.Base_Technology}}" style="max-width:20em" >
+										<!-- ko foreach: techlist -->
+												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
+											<!-- /ko -->
+										</oj-select-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Base_Technology">Brands :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-many id="Base_Technology" value="{{newdata.Brands}}" style="max-width:20em" >
+										<!-- ko foreach: brandslist -->
+												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
+											<!-- /ko -->
+										</oj-select-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Job_progress">Job Progress</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-slider id="Job_progress" value="{{newdata.sli}}"  min=0 max=100 step=10>
+										</oj-slider> <span id="value" data-bind="text:newdata.sli"></span>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="contact">Contact :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-combobox-many id="contact" value="{{newdata.contact}}" >
+											
+											
+										</oj-combobox-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="remark">remark :</oj-label>
+										
+									</div>
+									<div class="oj-flex-item">
+										<oj-combobox-many id="remark" value="{{newdata.remark}}">
+				
+										</oj-combobox-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Status">Status :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-one id="Status" value="{{newdata.Job_status}}" style="max-width:20em" >
+												<oj-option value="Open">Open</oj-option> <oj-option
+												value="On Progress">On Progress</oj-option> <oj-option
+												value="Completed">Completed</oj-option> <oj-option
+												value="Cancel">Cancel</oj-option> </oj-combobox-one>
+										</oj-select-one>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div slot="footer">
+			<oj-button id="okButton"
+				data-bind="click: addedClick">
+			Added </oj-button>
+		</div>
+		</oj-dialog>
+		<oj-button id="buttonOpener"
+			data-bind="click: function() {
+              document.querySelector('#AddNewTask').open();
             }">
-            Add New Task
-          </oj-button>
-        </div>
+		Add New Task </oj-button>
+	</div>
 
-        
-      </div>
+
+</div>

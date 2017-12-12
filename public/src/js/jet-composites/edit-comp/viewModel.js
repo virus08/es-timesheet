@@ -8,27 +8,7 @@ define(
     
     function ExampleComponentModel(context) {
         var self = this;
-        //var dataRow = {};
-        /** for edit 
-        {
-        	"Name_Surname":"Nathaphon Kiatwonghong",
-        	"Job_Type":"Documentation",
-        	"Job_SOW":"BoM",
-        	"Base_Technology":["Cloud","Network","Security"],
-        	"UID":3,
-        	"Job_Header":"BOM WSS",
-        	"Job_detail":"",
-        	"create_date":"2017-10-27T06:20:21.290Z",
-        	"Job_date":"2017-10-04T00:00:00.000Z",
-        	"modify_date":"2017-10-27T06:30:13.903Z",
-        	"Job_Hours":4,"Job_progress":100,
-        	"contract":["[Cambodia] TrustGroup"],
-        	"Job_status":"On Progress",
-        	"remark":["0"],
-        	"Brands":["Bluecoat"],"id":35
-        }
         
-        */
         //****************	
         //self.data=ko.observable();
         self.composite = context.element;
@@ -45,13 +25,11 @@ define(
             self.myid= self.properties.dataRow.id;
             self.data= self.properties.dataRow;
             var xdate= new Date(self.properties.dataRow.Job_date);
-            //var ndate = new Date(2017, 4, 10)
             self.nsow=ko.observable(self.properties.dataRow.Job_SOW);
             self.jobdate =ko.observable(oj.IntlConverterUtils.dateToLocalIso(xdate));
             self.sli= ko.observable(self.properties.dataRow.Job_progress);
             self.sowlist = self.properties.dataRow.sowlist
             self.job_hours= ko.observable(self.properties.dataRow.Job_Hours);
-            //Parse your component properties here 
         });
         
 
@@ -64,20 +42,20 @@ define(
 		};
 		self.comboChange = function( event )
 		{
-			var selested =self.sowlist.filter(sow => sow.Name==event.detail.value)
-			self.job_hours = ko.observable(selested[0].Hours)
-			var a=1;
+			var selested = self.sowlist.filter(sow => sow.Name==event.detail.value);
+			self.job_hours = ko.observable(selested[0].Hours);
 		};
 		
         self.saveButton = function() {
         	var url = "/api/timesheets/"+this.myid;
         	// data reload
-        	this.data.modify_date= Date.now();
+        	this.data.modify_date= new Date();
         	this.data.Job_SOW = self.nsow._latestValue
         	this.data.Job_progress = self.sli._latestValue
         	this.data.Job_date = new Date(self.jobdate._latestValue)
         	this.data.Job_Hours = self.job_hours._latestValue
-        	
+        	this.data.newJob_date=null;
+        	this.data.sowlist=null;
         	
         	var json = JSON.stringify(this.data);
 
@@ -134,5 +112,8 @@ define(
     //ExampleComponentModel.prototype.detached = function(context){
     //};
 
+    //ko.applyBindings(this);
     return ExampleComponentModel;
+    
 });
+

@@ -4,6 +4,9 @@ define(['ojs/ojcore', 'knockout', 'promise', 'jquery','ojs/ojdialog','jet-compos
   
     function TimesheetViewModel() {
       var self = this;
+      
+      
+      
 
       self.columnarray = [ 
 			{"headerText" : "Job name","field" : "Job_Header"}, 
@@ -12,6 +15,7 @@ define(['ojs/ojcore', 'knockout', 'promise', 'jquery','ojs/ojdialog','jet-compos
 			{"headerText" : "Status","field" : "Job_status"},
 			{"headerText" : "Work Hours","field" : "Job_Hours"},
 			{"headerText": "Action","field": "Rating","renderer": oj.KnockoutTemplateUtils.getRenderer("Action", true)}] 
+
      
       self.handleActivated = function(info) {
         // Implement if needed

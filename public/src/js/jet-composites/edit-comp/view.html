@@ -20,7 +20,7 @@
 								</div>
 								<div class="oj-flex-item">
 									<oj-input-text id="Jobtype" readonly
-										data-bind='value:data.Job_Type'></oj-input-text>
+										value="{{data.Job_Type}}"></oj-input-text>
 								</div>
 							</div>
 							<div class="oj-flex">
@@ -30,7 +30,7 @@
 								<div class="oj-flex-item">
 									<oj-combobox-one id="Scope" value="{{nsow}}" on-value-changed=[[comboChange]]>
 									<!-- ko foreach: sowlist -->
-										<oj-option value="{{Name}}"><span data-bind="text: Name"></oj-option>
+										<oj-option value="{{Name}}"><span data-bind="text: Name"></span> (<span id="value" data-bind="text:Hours"></span>)</oj-option>
 									<!-- /ko -->
 									</oj-combobox-one>
 									
@@ -45,7 +45,7 @@
 								</div>
 								<div class="oj-flex-item">
 									<oj-input-text id="Job_Hours" readonly
-										data-bind='value:job_hours'>
+										value="{{job_hours}}">
 									</oj-input-text>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 								<div class="oj-flex-item">
 									<!--  <oj-input-text id="Job_date" 
 										data-bind='value:Job_date'></oj-input-text> -->
-									<oj-input-date id="Job_date" value={{jobdate}} > </oj-input-date>
+									<oj-input-date id="Job_date" value="{{jobdate}}" > </oj-input-date>
 									
 								</div>
 							</div>
@@ -66,7 +66,7 @@
 								</div>
 								<div class="oj-flex-item">
 									<oj-input-text id="Brands" readonly
-										data-bind='value:data.Brands'></oj-input-text>
+										value="{{data.Brands}}"></oj-input-text>
 								</div>
 							</div>
 							<div class="oj-flex">
@@ -75,7 +75,7 @@
 								</div>
 								<div class="oj-flex-item">
 									<oj-input-text id="Base_Technology" readonly
-										data-bind='value:data.Base_Technology'></oj-input-text>
+										value="{{data.Base_Technology}}"></oj-input-text>
 								</div>
 							</div>
 							<div class="oj-flex">
@@ -92,7 +92,7 @@
 									<oj-label for="Job_progress">Job Progress</oj-label>
 								</div>
 								<div class="oj-flex-item">
-									<oj-slider id="Job_progress" value="{{sli}}">
+									<oj-slider id="Job_progress" value="{{sli}}"  min=0 max=100 step=10>
 									</oj-slider> <span id="value" data-bind="text:sli"></span>
 								</div>
 							</div>
