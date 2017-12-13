@@ -1,5 +1,43 @@
-<!--
-  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
-  The Universal Permissive License (UPL), Version 1.0
--->
-<p data-bind="text:messageText"></p>
+<div id="sampleDemo" style="" class="demo-padding demo-container">
+	<div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+		<oj-table style='width: 100%;' id="table" aria-label="Tasks Table" data="[[datasource]]"
+			row-renderer='[[oj.KnockoutTemplateUtils.getRenderer("row_template", true)]]'
+			columns='[{"headerText": "iD", "sortProperty": "id"},
+					{"headerText": "Project", "sortProperty": "F1"},
+                    {"headerText": "Description", "sortProperty": "F2"},
+                    {"headerText": "Type", "sortProperty": "F3"},
+                    {"headerText": "Status", "sortProperty": "F4"},
+                    {"headerText": "Action"}]'>
+		</oj-table>
+
+		<script type="text/html" id="row_template">
+            <tr>
+              <td>
+                <oj-row-expander context="[[$context.rowContext]]"></oj-row-expander>
+                <span data-bind="text: id"></span>
+              </td>
+			  <td>
+                <span data-bind="text: F1"></span>
+              </td>
+              <td>
+                <span data-bind="text: F2"></span>
+              </td>
+              <td>
+                <span data-bind="text: F3"></span>
+              </td>
+              <td>
+                <span data-bind="text: F4"></span>
+              </td>
+			  <td>
+					<div data-bind="if: F5">
+						<proj-edit data-bind='attr: {id:"edit"+id}' data={{row}}></proj-edit>
+					</div>
+              </td>
+            </tr>
+        </script>
+
+
+	</div>
+	
+	
+</div>

@@ -17,7 +17,24 @@ define(
         self.sowlist= ko.observableArray();
         
          
-        
+        var getapi= function (url){
+        	  var xhr = new XMLHttpRequest();
+        	  var res;
+              xhr.open("GET", url, false);
+              //xhr.setRequestHeader('Content-type', 'application/json');
+              xhr.setRequestHeader('Accept', 'application/json');
+              xhr.onload = function() {
+        		res = JSON.parse(xhr.responseText);
+        		if (xhr.readyState == 4 && xhr.status == "200") {
+        			return res;
+        		} else {
+        			console.error(res);
+        			return res;
+        		}
+        	  }
+              xhr.send();  
+              return res;
+          }
 
         context.props.then(function (propertyMap) {
             //Store a reference to the properties for any later use
@@ -30,6 +47,10 @@ define(
             self.sli= ko.observable(self.properties.dataRow.Job_progress);
             self.sowlist = self.properties.dataRow.sowlist
             self.job_hours= ko.observable(self.properties.dataRow.Job_Hours);
+            self.projectlist= getapi("http://localhost:8080/api/projects").
+        	filter(tlist=> tlist.UID == window.GlobalVariable).
+        	filter(tlist=> tlist.status != "Cancel").
+        	filter(tlist=> tlist.status != "Close");
         });
         
 

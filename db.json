@@ -8,12 +8,12 @@
     "RoleMapping": 1,
     "Role": 1,
     "profiles": 23,
-    "timesheet": 132,
+    "timesheet": 135,
     "brand": 26,
     "jobtype": 14,
     "tech": 8,
     "sow": 55,
-    "project": 2
+    "project": 7
   },
   "models": {
     "user": {
@@ -139,7 +139,10 @@
       "109": "{\"id\":109,\"Name_Surname\":\"Jirapich Traipherm\",\"Job_Type\":\"Comply\",\"Job_SOW\":\"Comply TOR\",\"Base_Technology\":[\"Software\"],\"UID\":9,\"Job_Header\":\"revise Diagram of IFRS\",\"Job_detail\":\"revise\",\"create_date\":\"2017-10-30T02:08:31.680Z\",\"Job_date\":\"2017-10-03T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:38:56.023Z\",\"Job_Hours\":4,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"RedHat\"]}",
       "111": "{\"id\":111,\"Name_Surname\":\"Jirapich Traipherm\",\"Job_Type\":\"Solution\",\"Job_SOW\":\"\",\"Base_Technology\":[\"Software\"],\"UID\":9,\"Job_Header\":\"Dell Data Protection to ING GROEP N.V \",\"Job_detail\":\"help support and consoute\",\"create_date\":\"2017-10-30T02:17:55.890Z\",\"Job_date\":\"2017-10-02T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:21:46.737Z\",\"Job_Hours\":0,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Quest\"]}",
       "118": "{\"id\":118,\"Name_Surname\":\"Jirapich Traipherm\",\"Job_Type\":\"Comply\",\"Job_SOW\":\"\",\"Base_Technology\":[\"Software\"],\"UID\":9,\"Job_Header\":\"Datacom_Cisco_Bank of lao (URGENT)\",\"Job_detail\":\"support and consult RHEL\",\"create_date\":\"2017-10-30T02:23:01.335Z\",\"Job_date\":\"2017-10-03T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:36:55.349Z\",\"Job_Hours\":0,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"RedHat\"]}",
-      "131": "{\"id\":131,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Comply\",\"Job_SOW\":\"Document Translation\",\"Base_Technology\":[\"Cloud\",\"Network\"],\"UID\":1,\"Job_Header\":\"test\",\"Job_detail\":\"tessssss\",\"create_date\":\"2017-12-11T10:55:08.846Z\",\"Job_date\":\"2017-12-19T00:00:00.000Z\",\"modify_date\":\"2017-12-11T10:55:24.087Z\",\"Job_Hours\":4,\"Job_progress\":100,\"contract\":[\"sss\",\"dddd\"],\"Job_status\":\"Completed\",\"remark\":[\"sss\"],\"Brands\":[\"ARISTA\",\"Bluecoat\"],\"newJob_date\":null,\"sowlist\":null}"
+      "131": "{\"id\":131,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Comply\",\"Job_SOW\":\"Document Translation\",\"Base_Technology\":[\"Cloud\",\"Network\"],\"UID\":1,\"Job_Header\":\"test\",\"Job_detail\":\"tessssss\",\"create_date\":\"2017-12-11T10:55:08.846Z\",\"Job_date\":\"2017-12-19T00:00:00.000Z\",\"modify_date\":\"2017-12-13T12:44:06.018Z\",\"Job_Hours\":4,\"Job_progress\":100,\"contract\":[\"sss\",\"dddd\"],\"Job_status\":\"Completed\",\"remark\":[\"sss\"],\"Brands\":[\"ARISTA\",\"Bluecoat\"],\"newJob_date\":null,\"sowlist\":null,\"project\":3}",
+      "132": "{\"id\":132,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Request of proposal\",\"Base_Technology\":[\"Cloud\"],\"UID\":1,\"Job_Header\":\"Test Job\",\"Job_detail\":\"Test Detail\",\"create_date\":\"2017-12-12T01:48:37.167Z\",\"Job_date\":\"2017-12-12T00:00:00.000Z\",\"modify_date\":\"2017-12-13T12:44:11.274Z\",\"Job_Hours\":8,\"contract\":[\"Wanchai Fuangmlai\"],\"Job_status\":\"On Progress\",\"remark\":[\"Assd\",\"aadd\"],\"Brands\":[\"Cloud\"],\"newJob_date\":null,\"sowlist\":null,\"project\":6}",
+      "133": "{\"id\":133,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Technical of request\",\"Base_Technology\":[\"Peripheral\"],\"UID\":1,\"Job_Header\":\"asd\",\"Job_detail\":\"asdasd\",\"create_date\":\"2017-12-12T14:47:48.465Z\",\"Job_date\":\"2017-12-13T00:00:00.000Z\",\"modify_date\":\"2017-12-13T12:44:16.282Z\",\"Job_Hours\":1,\"contract\":[\"asdasd\"],\"Job_status\":\"Open\",\"remark\":[\"adasd\"],\"Brands\":[\"Bluecoat\",\"Dell\"],\"newJob_date\":null,\"sowlist\":null,\"project\":2}",
+      "134": "{\"id\":134,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"POC with vServe Plus\",\"Job_SOW\":\"Prove of Concept with vServe Plus\",\"Base_Technology\":[\"Cloud\",\"Network\"],\"UID\":1,\"Job_Header\":\"asd\",\"Job_detail\":\"asdad\",\"create_date\":\"2017-12-12T14:49:59.622Z\",\"Job_date\":\"2017-12-13T00:00:00.000Z\",\"modify_date\":\"2017-12-13T12:44:21.714Z\",\"Job_Hours\":8,\"Job_progress\":50,\"contract\":[\"asd\"],\"Job_status\":\"On Progress\",\"remark\":[\"asd\"],\"Brands\":[\"ARISTA\"],\"newJob_date\":null,\"sowlist\":null,\"project\":2}"
     },
     "brand": {
       "1": "{\"Name\":\"Acronis\",\"emailVerified\":true,\"id\":1}",
@@ -249,7 +252,11 @@
       "54": "{\"GroupName\":\"Business Traveling\",\"Name\":\"Global Training\",\"Hours\":8,\"emailVerified\":true,\"id\":54}"
     },
     "project": {
-      "1": "{\"Name\":\"Test Project\",\"status\":\"Open\",\"emailVerified\":true,\"id\":1}"
+      "2": "{\"id\":2,\"Name\":\"Project Name\",\"status\":\"Open\",\"Status\":\"Cancel\",\"Desc\":\"Test Edit1\",\"Type\":\"Internal\",\"UID\":1,\"Modify_date\":\"2017-12-13T12:39:55.073Z\"}",
+      "3": "{\"Name\":\"Test Project\",\"status\":\"Open\",\"Desc\":\"Project Description\",\"Type\":\"Internal\",\"UID\":1,\"Status\":\"Open\",\"id\":3}",
+      "4": "{\"Name\":\"aaa\",\"status\":\"Open\",\"Status\":\"Progress\",\"Desc\":\"aaaa\",\"Type\":\"Selling\",\"UID\":1,\"Create_date\":\"2017-12-12T08:46:19.936Z\",\"id\":4}",
+      "5": "{\"Name\":\"test1\",\"status\":\"Open\",\"Status\":\"Progress\",\"Desc\":\"111\",\"Type\":\"Internal\",\"UID\":3,\"Create_date\":\"2017-12-12T08:51:30.846Z\",\"id\":5}",
+      "6": "{\"id\":6,\"Name\":\"aaa\",\"status\":\"Open\",\"Status\":\"Cancel\",\"Desc\":\"test1\",\"Type\":\"Internal\",\"UID\":1,\"Modify_date\":\"2017-12-13T12:40:44.905Z\",\"Create_date\":\"2017-12-12T08:58:24.289Z\"}"
     }
   }
 }

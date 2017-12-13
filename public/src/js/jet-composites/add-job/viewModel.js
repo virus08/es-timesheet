@@ -33,6 +33,10 @@ define(
         self.typelist= getapi("http://localhost:8080/api/jobtypes");
         self.techlist= getapi("http://localhost:8080/api/teches");
         self.brandslist= getapi("http://localhost:8080/api/brands");
+        self.projectlist= getapi("http://localhost:8080/api/projects").
+        	filter(tlist=> tlist.UID == window.GlobalVariable).
+        	filter(tlist=> tlist.status != "Cancel").
+        	filter(tlist=> tlist.status != "Close");
         self.sowlist= ko.observableArray([]);
         //self.clist= ko.observableArray([]);
         self.composite = context.element;

@@ -5,9 +5,12 @@
   "version": "1.0.0",
   "jetVersion": "^4.0.0",
   "properties": {
+  	"data":{
+  		"type": "Object"
+  	}
   },
   "methods": {
-
+	
   }, 
   "events": {
 

@@ -1,5 +1,71 @@
-<!--
-  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
-  The Universal Permissive License (UPL), Version 1.0
--->
-<p data-bind="text:messageText"></p>
+<div id="componentAddProject">
+	<div id="dialogAddProjectWrapper">
+		<oj-dialog  style="display:none;width:700px;height:250px;" id="AddProject" title="Project Added">
+		<div slot="body">
+			<div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline">
+				<div class="oj-flex">
+					<div id="form-container">
+						<div class="oj-form-layout">
+							<div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline oj-form-cols-labels-inline oj-form-cols-max2">
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Project_Name">Project :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-input-text id="Project_Name" value="{{newdata.Name}}"></oj-input-text>
+									</div>
+								</div>
+								
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Project_Detail">Detail :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-text-area id="Project_Detail" value="{{newdata.Desc}}"></oj-text-area>
+									</div>
+								</div>
+								
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="ProjectType">Type :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-one id="ProjectType" value="{{newdata.Type}}" on-value-changed=[[TypeChange]] >
+												<oj-option value="Internal">Internal</oj-option>
+												<oj-option value="Selling">Selling</oj-option>
+										</oj-select-one>
+									</div>
+								</div>
+								
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="ProjectStatus">Status :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-one id="ProjectStatus" value="{{newdata.Status}}">
+												<oj-option value="Open">Open</oj-option>
+												<oj-option value="Progress">Progress</oj-option>
+												<oj-option value="Close">Close</oj-option>
+										</oj-select-one>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div slot="footer">
+			<oj-button id="addProjectButton"
+				data-bind="click: addedProjectClick">
+			Added </oj-button>
+		</div>
+		</oj-dialog>
+		<oj-button id="addNewProjectButton"
+			data-bind="click: addedNewProjectClick">
+		Add Project </oj-button>
+	</div>
+
+
+</div>

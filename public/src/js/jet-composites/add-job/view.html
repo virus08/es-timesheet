@@ -128,6 +128,20 @@
 										</oj-select-one>
 									</div>
 								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Project">Project :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-one id="Project" value="{{newdata.project}}" style="max-width:20em" >
+										<oj-option value="null"> No Project Att</oj-option>
+										<!-- ko foreach: projectlist -->
+												<oj-option value="{{id}}"><span data-bind="text: Name+' id: ('+id+')'"></span> </oj-option>
+											<!-- /ko -->
+										</oj-select-one>
+									</div>
+								</div>
+								
 							</div>
 						</div>
 					</div>

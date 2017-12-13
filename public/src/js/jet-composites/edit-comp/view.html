@@ -28,11 +28,11 @@
 									<oj-label for="Scope">Scope : </oj-label> 
 								</div>
 								<div class="oj-flex-item">
-									<oj-combobox-one id="Scope" value="{{nsow}}" on-value-changed=[[comboChange]]>
+									<oj-select-one id="Scope" value="{{nsow}}" on-value-changed=[[comboChange]]>
 									<!-- ko foreach: sowlist -->
 										<oj-option value="{{Name}}"><span data-bind="text: Name"></span> (<span id="value" data-bind="text:Hours"></span>)</oj-option>
 									<!-- /ko -->
-									</oj-combobox-one>
+									</oj-select-one>
 									
 									
 									<!-- <oj-input-text id="Scope" readonly
@@ -102,15 +102,27 @@
 									<oj-label for="Job_status">Job_status</oj-label>
 								</div>
 								<div class="oj-flex-item">
-									<oj-combobox-one id="Job_status" value='{{data.Job_status}}'>
+									<oj-select-one id="Job_status" value='{{data.Job_status}}'>
 									<oj-option value="Open">Open</oj-option> <oj-option
 										value="On Progress">On Progress</oj-option> <oj-option
 										value="Completed">Completed</oj-option> <oj-option
-										value="Cancel">Cancel</oj-option> </oj-combobox-one>
+										value="Cancel">Cancel</oj-option> </oj-select-one>
 								</div>
 							</div>
-
-
+							<div class="oj-flex">
+								<div class="oj-flex-item">
+									<oj-label for="Job_status">Job_status</oj-label>
+								</div>
+								<div class="oj-flex-item">
+									<oj-select-one id="Project" value="{{data.project}}" style="max-width:20em" >
+										<oj-option value="null"> No Project Att</oj-option>
+										<!-- ko foreach: projectlist -->
+											<oj-option value="{{id}}"><span data-bind="text: Name+' id: ('+id+')'"></span> </oj-option>
+										<!-- /ko -->
+									</oj-select-one>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

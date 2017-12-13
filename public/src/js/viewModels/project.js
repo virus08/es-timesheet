@@ -1,5 +1,7 @@
 
-define(['ojs/ojcore', 'knockout', 'jquery','jet-composites/filter-table/loader','jet-composites/edit-comp/loader'],
+define(['ojs/ojcore', 'knockout', 'ojs/ojdialog','jquery','jet-composites/proj-table/loader',
+	'jet-composites/proj-added/loader','jet-composites/data-table/loader','jet-composites/edit-comp/loader',
+	'jet-composites/add-job/loader','jet-composites/proj-edit/loader'],
  function(oj, ko, $) {
   
     function ProjectViewModel() {
