@@ -4,7 +4,7 @@
 -->
 <div id="componentDemoContent">
 	<div id="dialogWrapper">
-		<oj-dialog  style="display:none;width:700px;height:520px;" id="AddNewTask" title="Task Added">
+		<oj-dialog  style="display:none;width:720px;" id="AddNewTask" title="Task Added">
 		<div slot="body">
 			<div
 				class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-4 oj-md-labels-inline">
@@ -37,6 +37,32 @@
 										<oj-input-date id="Job_date" value="{{newdata.Job_date}}"> </oj-input-date>
 									</div>
 								</div>
+								
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Brands">Brands :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-many id="Brands" value="{{newdata.Brands}}" style="max-width:20em" >
+										<!-- ko foreach: brandslist -->
+												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
+											<!-- /ko -->
+										</oj-select-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Base_Technology">Technology :</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-select-many id="Base_Technology" value="{{newdata.Base_Technology}}" style="max-width:20em" >
+										<!-- ko foreach: techlist -->
+												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
+											<!-- /ko -->
+										</oj-select-many>
+									</div>
+								</div>
+
 								<div class="oj-flex">
 									<div class="oj-flex-item">
 										<oj-label for="Jobtype">Type :</oj-label>
@@ -62,39 +88,6 @@
 								</div>
 								<div class="oj-flex">
 									<div class="oj-flex-item">
-										<oj-label for="Base_Technology">Technology :</oj-label>
-									</div>
-									<div class="oj-flex-item">
-										<oj-select-many id="Base_Technology" value="{{newdata.Base_Technology}}" style="max-width:20em" >
-										<!-- ko foreach: techlist -->
-												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
-											<!-- /ko -->
-										</oj-select-many>
-									</div>
-								</div>
-								<div class="oj-flex">
-									<div class="oj-flex-item">
-										<oj-label for="Base_Technology">Brands :</oj-label>
-									</div>
-									<div class="oj-flex-item">
-										<oj-select-many id="Base_Technology" value="{{newdata.Brands}}" style="max-width:20em" >
-										<!-- ko foreach: brandslist -->
-												<oj-option value="{{Name}}"><span data-bind="text: Name"></span> </oj-option>
-											<!-- /ko -->
-										</oj-select-many>
-									</div>
-								</div>
-								<div class="oj-flex">
-									<div class="oj-flex-item">
-										<oj-label for="Job_progress">Job Progress</oj-label>
-									</div>
-									<div class="oj-flex-item">
-										<oj-slider id="Job_progress" value="{{newdata.sli}}"  min=0 max=100 step=10>
-										</oj-slider> <span id="value" data-bind="text:newdata.sli"></span>
-									</div>
-								</div>
-								<div class="oj-flex">
-									<div class="oj-flex-item">
 										<oj-label for="contact">Contact :</oj-label>
 									</div>
 									<div class="oj-flex-item">
@@ -113,6 +106,15 @@
 										<oj-combobox-many id="remark" value="{{newdata.remark}}">
 				
 										</oj-combobox-many>
+									</div>
+								</div>
+								<div class="oj-flex">
+									<div class="oj-flex-item">
+										<oj-label for="Job_progress">Job Progress</oj-label>
+									</div>
+									<div class="oj-flex-item">
+										<oj-slider id="Job_progress" value="{{newdata.sli}}"  min=0 max=100 step=10>
+										</oj-slider> <span id="value" data-bind="text:newdata.sli"></span>
 									</div>
 								</div>
 								<div class="oj-flex">

@@ -13,27 +13,29 @@ define(
         self.composite = context.element;
         //Example observable
         self.messageText = ko.observable('Hello from Example Component');
-        self.chartType = "bar";
-       
+        //self.chartType = "bar";
+        /*self.value = [{name: "Open", items: [1,2,3,4,5,6,7,8,9,10,11,12]},
+            {name: "On Progress", items: [1,2,3,4,5,6,7,8,9,10,11,12]},
+            {name: "Completed", items: [1,2,3,4,5,6,7,8,9,10,11,12]},
+            {name: "Cancel", items: [1,2,3,4,5,6,7,8,9,10,11,12]}];
+        */
+
+        //self.group = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
         context.props.then(function (propertyMap) {
             //Store a reference to the properties for any later use
             self.properties = propertyMap;
-            self.messageText(self.properties.myMessage);
+            //self.messageText(self.properties.myMessage);
             self.chartType = self.properties.chartType;
+    		self.barSeriesValue = ko.observableArray(self.properties.value);
+    		self.barGroupsValue = ko.observableArray(self.properties.group);
+
             //Parse your component properties here 
 
         });
-        var barSeries = [{name: "Series 1", items: [42, 34]},
-            {name: "Series 2", items: [55, 30]},
-            {name: "Series 3", items: [36, 50]},
-            {name: "Series 4", items: [22, 46]},
-            {name: "Series 5", items: [22, 46]}];
-
-		var barGroups = ["Group A", "Group B"];
+        
 		
-		self.barSeriesValue = ko.observableArray(barSeries);
-		self.barGroupsValue = ko.observableArray(barGroups);
+
     };
     
     //Lifecycle methods - uncomment and implement if necessary 

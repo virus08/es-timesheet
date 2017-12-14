@@ -10,6 +10,12 @@
   	},
   	"chartType": {
   		"type": "string"
+  	},
+  	"value":{
+  		"type": "array"
+  	},
+  	"group":{
+  		"type": "array"
   	}
   },
   "methods": {
