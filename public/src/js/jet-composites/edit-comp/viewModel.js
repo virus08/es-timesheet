@@ -47,7 +47,7 @@ define(
             self.sli= ko.observable(self.properties.dataRow.Job_progress);
             self.sowlist = self.properties.dataRow.sowlist
             self.job_hours= ko.observable(self.properties.dataRow.Job_Hours);
-            self.projectlist= getapi("http://localhost:8080/api/projects").
+            self.projectlist= getapi("/api/projects").
         	filter(tlist=> tlist.UID == window.GlobalVariable).
         	filter(tlist=> tlist.status != "Cancel").
         	filter(tlist=> tlist.status != "Close");

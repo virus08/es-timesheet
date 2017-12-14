@@ -22,7 +22,7 @@ define(
         });
         //Event Handling 
         self.addedProjectClick = function (contex){
-        	var url ="http://localhost:8080/api/projects"
+        	var url ="/api/projects"
         	var now = new Date();
         	var xhr = new XMLHttpRequest();
         	xhr.open("POST", url, true);

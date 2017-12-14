@@ -30,7 +30,7 @@ define(
         	document.querySelector('#Edit'+even.id).open();
         };
         self.okClick = function(even){
-        	var url="http://localhost:8080/api/projects/"+even.id
+        	var url="/api/projects/"+even.id
         	var xhr = new XMLHttpRequest();
         	var now = new Date();
         	xhr.open("PUT", url, true);

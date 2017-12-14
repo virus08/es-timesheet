@@ -28,12 +28,12 @@ define(
             return res;
         }
         
-        var uname = getapi("http://localhost:8080/api/profiles").filter(uid => uid.uid == window.GlobalVariable)[0];
-        self.slist = getapi("http://localhost:8080/api/sows")
-        self.typelist= getapi("http://localhost:8080/api/jobtypes");
-        self.techlist= getapi("http://localhost:8080/api/teches");
-        self.brandslist= getapi("http://localhost:8080/api/brands");
-        self.projectlist= getapi("http://localhost:8080/api/projects").
+        var uname = getapi("/api/profiles").filter(uid => uid.uid == window.GlobalVariable)[0];
+        self.slist = getapi("/api/sows")
+        self.typelist= getapi("/api/jobtypes");
+        self.techlist= getapi("/api/teches");
+        self.brandslist= getapi("/api/brands");
+        self.projectlist= getapi("/api/projects").
         	filter(tlist=> tlist.UID == window.GlobalVariable).
         	filter(tlist=> tlist.status != "Cancel").
         	filter(tlist=> tlist.status != "Close");

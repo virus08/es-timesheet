@@ -31,8 +31,8 @@ define(
               xhr.send();  
               return res;
           }
-        self.projectlist= getapi("http://localhost:8080/api/projects").filter(tlist=> tlist.UID == window.GlobalVariable).filter(tlist=> tlist.status != "Cancel");
-        self.Timesheet= getapi("http://localhost:8080/api/timesheets")
+        self.projectlist= getapi("/api/projects").filter(tlist=> tlist.UID == window.GlobalVariable).filter(tlist=> tlist.status != "Cancel");
+        self.Timesheet= getapi("/api/timesheets")
         var len = self.projectlist.length;
         var i;
         var data=[];

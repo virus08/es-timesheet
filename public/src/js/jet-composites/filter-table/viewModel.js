@@ -55,7 +55,7 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/o
 			for (i = 0; i < len ; i++) { 
 				self.data.pop();
 			}
-			$.getJSON("http://localhost:8080/api/timesheets").then(
+			$.getJSON("/api/timesheets").then(
 					function(timesheet) {
 						$.each(timesheet, function() {
 							if (this.UID == self.userid) {
@@ -77,7 +77,7 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/o
 				self.data.pop();
 			}
 
-			$.getJSON("http://localhost:8080/api/timesheets").then(
+			$.getJSON("/api/timesheets").then(
 					function(timesheet) {
 						$.each(timesheet, function() {
 							if (this.UID == self.userid) {
@@ -111,7 +111,7 @@ define([ 'ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/o
 		
 
 	    
-		$.getJSON("http://localhost:8080/api/timesheets").then(
+		$.getJSON("/api/timesheets").then(
 				function(timesheet) {
 					$.each(timesheet, function() {
 						if (this.UID == self.userid) {
