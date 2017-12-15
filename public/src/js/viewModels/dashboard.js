@@ -37,7 +37,7 @@ define(['ojs/ojcore', 'knockout', 'jquery','jet-composites/my-chart/loader'],
       self.value1 =  [{name: "Open", items: [self.timesheet.filter(list => list.Job_status=="Open").length]},
           {name: "On Progress", items: [self.timesheet.filter(list => list.Job_status=="On Progress").length]},
           {name: "Completed", items: [self.timesheet.filter(list => list.Job_status=="Completed").length]},
-          {name: "Cancel", items: [[self.timesheet.filter(list => list.Job_status=="Cancel").length]]}];
+          {name: "Cancel", items: [self.timesheet.filter(list => list.Job_status=="Cancel").length]}];
       
       self.group1 = [];
       var getm = function(list,comp){
