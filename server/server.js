@@ -101,11 +101,11 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 	routes:[{ 
 		path: '/',
 		component: { 
-			template: '<Timesheet source="/api/timesheets" uid='+req.user.id+'></test1>' 
+			template: '<Timesheet1 source="/api/timesheets" uid='+req.user.id+'></Timesheet1>' 
 		}},{ 
 		path: '/all',
 		component: { 
-			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'></test1>' 
+			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'/>' 
 			}},{ 
 		path: '/conf',
 		component: { 

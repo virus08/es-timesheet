@@ -8,7 +8,7 @@
     "RoleMapping": 1,
     "Role": 1,
     "profiles": 23,
-    "timesheet": 125,
+    "timesheet": 126,
     "brand": 26,
     "jobtype": 14,
     "tech": 8,
@@ -172,7 +172,8 @@
       "119": "{\"id\":119,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Event\",\"Job_SOW\":\"Seminar\",\"Base_Technology\":[\"Cloud\"],\"UID\":1,\"Job_Header\":\"aaa\",\"Job_detail\":\"aaa\",\"create_date\":\"2017-10-30T02:37:17.780Z\",\"Job_date\":\"2017-10-31T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:37:50.597Z\",\"Job_Hours\":4,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Acronis\"]}",
       "121": "{\"id\":121,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Present-Speaker\",\"Job_SOW\":\"Assissts Speaker\",\"Base_Technology\":[\"Cloud\"],\"UID\":1,\"Job_Header\":\"aaa\",\"Job_detail\":\"aaa\",\"create_date\":\"2017-10-30T02:40:30.008Z\",\"Job_date\":\"2017-10-30T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:40:52.373Z\",\"Job_Hours\":4,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"ARISTA\"]}",
       "122": "{\"id\":122,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Solution\",\"Job_SOW\":\"Project Initiative\",\"Base_Technology\":[],\"UID\":1,\"Job_Header\":\"aaaa\",\"Job_detail\":\"aaaa\",\"create_date\":\"2017-10-30T02:40:53.168Z\",\"Job_date\":\"2017-10-30T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:41:30.643Z\",\"Job_Hours\":8,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[]}",
-      "123": "{\"id\":123,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Sales Support\",\"Job_SOW\":\"Request of Information\",\"Base_Technology\":[\"Software\"],\"UID\":1,\"Job_Header\":\"asd\",\"Job_detail\":\"asd\",\"create_date\":\"2017-10-30T02:41:31.358Z\",\"Job_date\":\"2017-10-31T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:42:11.216Z\",\"Job_Hours\":2,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"ARISTA\"]}"
+      "123": "{\"id\":123,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Sales Support\",\"Job_SOW\":\"Request of Information\",\"Base_Technology\":[\"Software\"],\"UID\":1,\"Job_Header\":\"asd\",\"Job_detail\":\"asd\",\"create_date\":\"2017-10-30T02:41:31.358Z\",\"Job_date\":\"2017-10-31T00:00:00.000Z\",\"modify_date\":\"2017-10-30T02:42:11.216Z\",\"Job_Hours\":2,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"ARISTA\"]}",
+      "125": "{\"Name_Surname\":\"Nathaphon Kiatwonghong\",\"Job_Type\":\"POC with vServe Plus\",\"Job_SOW\":\"\",\"Base_Technology\":[\"Cloud\",\"Security\"],\"UID\":3,\"Job_Header\":\"aaaa\",\"Job_detail\":\"aaa\",\"create_date\":\"2018-01-09T06:08:58.450Z\",\"Job_date\":\"2018-01-09T00:00:00.000Z\",\"modify_date\":\"2018-01-09T06:08:58.450Z\",\"Job_Hours\":0,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"],\"id\":125}"
     },
     "brand": {
       "1": "{\"Name\":\"Acronis\",\"emailVerified\":true,\"id\":1}",
