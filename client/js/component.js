@@ -433,7 +433,7 @@ Vue.component('c-form', {
                                         <option v-for="option in jobtype">{{option.Name}}</option>                                       
                                     </select>
                                     <label>Scope</label> 
-		 							<select class="form-control m-b" v-model="timesheet.Job_SOW" v-on:change="">
+		 							<select class="form-control m-b" v-model="timesheet.Job_SOW" v-on:change="timesheet.Job_Hours=">
                                         <option v-for="option in list">{{option.Name}}</option>                                       
                                     </select>
                                     <label>Work Hours</label> {{timesheet.Job_Hours}}<p> 
