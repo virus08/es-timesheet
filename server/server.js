@@ -105,7 +105,7 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 		}},{ 
 		path: '/all',
 		component: { 
-			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'/>' 
+			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'> </allTimesheet>' 
 			}},{ 
 		path: '/conf',
 		component: { 

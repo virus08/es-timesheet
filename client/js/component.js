@@ -37,7 +37,138 @@ Vue.component('test', {
 
 
 
-
+Vue.component('edit-model', {
+	props: ['xid','data'],
+	data: function () {
+	    return {
+	    	sow:null,
+	    	opt:null,
+	    	project:null,
+	    	jobstatus:[
+	    		'Open',
+	    		'On Progress',
+	    		'Completed',
+	    		'Cancel'
+	    	]
+	    }
+	},methods: {
+		fdel:function(){
+			this.$http.delete('/api/timesheets/'+this.data.id)
+	    	location.href = "/";
+		},
+		update:function(){
+			 this.data.modify_date=new Date();
+			 if (this.data.Job_status==='Completed'){
+				 this.data.Completed_date=new Date();
+				 this.data.Job_progress=100;
+			 }
+			
+	    	 this.$http.post('/api/timesheets/'+this.data.id+'/replace',this.data)
+	    	  //$('#modal-form'+this.xid).modal('hide')
+	    	 location.href = "/"
+	      },
+	      sethour: function(){
+	    	  this.data.Hours=this.sow.Hours.filter(function (n){
+	    		  return n.Name=="Guide line";
+	    	  });
+	      },
+	      getsow: function(){
+	            this.$http.get('/api/sows').then(function(response){
+	                this.sow = response.data;
+	            }, function(error){
+	                console.log(error.statusText);
+	            });
+	        },
+	        getproject: function(){
+	            this.$http.get('/api/projects').then(function(response){
+	                this.project = response.data.filter(function (n){
+	                    return n.status=='Open' || n.Job_status=='Progress';
+	                });
+	            }, function(error){
+	                console.log(error.statusText);
+	            });
+	        }
+	    },
+	    mounted: function () {
+	    	this.getsow();
+	    	this.opt=this.data.Job_SOW;
+	    	this.getproject();
+	    },
+	template:`
+		<div>
+			<div class="text-center">
+				<!-- <a data-toggle="modal" class="btn btn-primary" :href="'#modal-form'+xid">Edit</a> -->
+			</div>
+				<div :id="'modal-form'+xid" class="modal fade" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-sm-6 b-r">
+				 						<div class="form-group">
+				 							<p><label>Job Name</label> {{data.Job_Header}} </p>
+				 							<p><label>Job Type</label> {{data.Job_Type}} </p>
+				 							<p><label>SoW</label> {{data.Job_SOW}}</p>
+				 							<label>Job Hours</label> {{data.Job_Hours}}
+		                                    <p><label>Deadline</label> {{data.Job_date|formatDate}} </p>
+		                                    <label>Brands</label>
+		                                    	<ul>
+		                                    		<li v-for="tech in data.Brands">{{tech}}</li>
+		                                    	</ul>
+		                                    <label>Base On Technology</label>
+		                                    	<ul>
+		                                    		<li v-for="tech in data.Base_Technology">{{tech}}</li>
+		                                    	</ul>
+		                                    <label>Contact</label>
+		                                    	<ul>
+		                                    		<li v-for="contact in data.contract">{{contact}}</li>
+		                                    	</ul>
+				 						</div>		
+				 					</div>
+				 					<div class="col-sm-6">
+				 						<div class="form-group">
+					 							<label>Scope Of Works</label> 
+				 								<select class="form-control m-b" v-model="opt" v-on:change='data.Job_Hours=opt.Hours;data.Job_SOW=opt.Name' :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
+				 									<option selected >{{data.Job_SOW}}</option>
+			                                        <option v-for="option in sow" :value=option v-if='option.GroupName=== data.Job_Type'>{{option.Name}}</option>                                       
+			                                    </select>
+					 							<label>Job Detail</label> <input type="text" v-model="data.Job_detail" placeholder="รายละเอียด" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
+					 							<label>Job Progress</label> <input type="number" v-model="data.Job_progress" placeholder="ความคืบหน้า" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
+					 							<label>Job status</label> 
+					 							<select class="form-control m-b" v-model="data.Job_status" >
+			                                        <option v-for="option in jobstatus">{{option}}</option>                                       
+			                                    </select>
+			                                    <label>Project Task Tack</label> 
+					 							<select class="form-control m-b" v-model="data.project" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'">
+			                                        <option v-for="option in project">{{option.Name}}</option>                                       
+			                                    </select>
+				 							</div>
+				 						<div class="row">
+				 							<div class="col-sm-6"/>
+				 							<div class="col-sm-3">
+				 								<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="update">
+				 									<strong>Update</strong>
+				 								</button> 
+				 							</div>
+				 							
+				 							<div class="col-sm-3">
+				 								<button class="btn btn-sm btn-primary pull-right m-t-n-xs " v-on:click="fdel">
+				 									<strong>Delete</strong>
+				 								</button>
+				 							</div>
+				 						</div>
+				 					</div>
+				
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`
+});
 
 Vue.component('Timesheet1', {
 	 props: ['source','uid'],
@@ -63,7 +194,7 @@ Vue.component('Timesheet1', {
                          <div class="table-responsive">
                          	<vue-test-table />
 		 					 <New_Job name='#newjob-form' :UID=uid />
-		 					 
+		 					 <xedit :source="source" />
                          </div> 		 				
                         </div>
                     </div>
@@ -88,9 +219,6 @@ Vue.component('vue-test-table', {
 	  this.mounttable();
   },
   methods: {
-	  update:function(){
-		  alert('test');
-	  },
 	  mounttable:function(){
 		  var url  = "/api/timesheets";
 		  var datatable=[];
@@ -109,13 +237,7 @@ Vue.component('vue-test-table', {
 		  //this.datasourcs=Vuelib.datatable
 		  datatable.forEach(function(entry){
 			  var temparray=[];
-			  var lender=`
-			  <div>
-				  <div class="text-center">
-				  	<a data-toggle="modal" class="btn btn-primary" href="#modal-form`+entry.id+`">Edit</a>
-				  </div>
-				  
-			  </div>`;
+			  var lender=`<a data-toggle="modal" class="btn btn-primary" href="#modal-form`+entry.id+`">Edit</a>	`;
 			  var xdate = moment(String(entry.Job_date)).format('DD MMM YY')
 			  if(entry.UID==Vuelib.UID){
 				  temparray.push(entry.Job_Header);
@@ -129,7 +251,7 @@ Vue.component('vue-test-table', {
 				  
 			  }			  
 			});
-		  $('.vue-test-table').dataTable({responsive: true,"data": vueTestTable,"dom": 'l<"clear">frtip'});
+		  Vuelib.table = $('.vue-test-table').dataTable({"order": [[ 3, "desc" ]],responsive: true,"data": vueTestTable,"dom": 'l<"clear">frtip'});
 	  }
   },  
   template: `
@@ -152,42 +274,31 @@ Vue.component('vue-test-table', {
   `
 });
 
-Vue.component('editform', {
-	props: ['fid'],
-	methods: {
-		  update:function(){
-			  alert('fid');
-		  }
-	},
-	template: `<div :id="'modal-form'+fid" class="modal fade" aria-hidden="true">
-	  	<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-body">
-			<div class="row">
-				{{fid}}
-			</div>
-			<div class="row">
-				<hr>
-			</div>
-			<div class="row">
-				<div class="col-sm-8">
-				</div>
-				<div class="col-sm-2">
-					<button class="btn btn-sm btn-primary pull-right m-t-n-xs" onclick="update">
-						<strong>Update</strong>
-					</button>
-				</div>
-				<div class="col-sm-2">
-					<button class="btn btn-sm btn-primary pull-right m-t-n-xs" onclick="alert(JSON.stringify(event))">
-						<strong>Delete</strong>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>`
-});
+
+
+Vue.component('xedit', {
+	 props: ['source'],
+	 template: `<div>
+		 			<edit-model v-for="data in list" :xid=data.id :data=data />
+		 		</div>`,
+	 data: function () {
+	    return {
+	    	list: null
+	    }
+	  },
+	  methods: {
+		  getUsers: function(){
+	            this.$http.get(this.source).then(function(response){
+	                this.list = response.data;
+	            }, function(error){
+	                console.log(error.statusText);
+	            });
+	        }
+	    },
+	    mounted: function () {
+	        this.getUsers();
+	    }
+	})
 
 Vue.component('allTimesheet', {
 	 props: ['source','uid'],
@@ -201,8 +312,8 @@ Vue.component('allTimesheet', {
 		 			</div>
 		 			<div class="ibox-content">
 		 				<div class="table-responsive">
-		 					<alltables :uid='uid' source='/api/timesheets'></alltables>
-		 				<div>
+		 					<test :source="source" />
+		 				</div>
                    </div>
 		 		</div>                 
 		 	</div>
@@ -247,129 +358,7 @@ Vue.component('New_Job', {
 
 
 	
-Vue.component('edit', {
-	props:['name','data'],
-	 template: 
-		 `
-		<div class="col-md-3">
-			<div class="text-center">
-				<a data-toggle="modal" class="btn btn-primary btn-sm" :href=ahref+name+data.id>
-				 <i class="fa fa-edit"></i>
-				 </a>
-			</div>
-		 	<div :id=name+data.id class="modal fade" aria-hidden="true">
-		 		<div class="modal-dialog">
-		 		<div class="modal-content">
-		 			<div class="modal-body">
-		 				<div class="row">
-		 					<div class="col-sm-6 b-r">
-		 						<div class="form-group">
-		 							<p><label>Job Name</label> {{data.Job_Header}} </p>
-		 							<p><label>Job Type</label> {{data.Job_Type}} </p>
-		 							<p><label>SoW</label> {{data.Job_SOW}}</p>
-		 							<label>Job Hours</label> {{data.Job_Hours}}
-                                    <p><label>Deadline</label> {{data.Job_date|formatDate}} </p>
-                                    <label>Brands</label>
-                                    	<ul>
-                                    		<li v-for="tech in data.Brands">{{tech}}</li>
-                                    	</ul>
-                                    <label>Base On Technology</label>
-                                    	<ul>
-                                    		<li v-for="tech in data.Base_Technology">{{tech}}</li>
-                                    	</ul>
-                                    <label>Contact</label>
-                                    	<ul>
-                                    		<li v-for="contact in data.contract">{{contact}}</li>
-                                    	</ul>
-		 						</div>		
-		 					</div>
-		 						<div class="col-sm-6">
-		 							<div class="form-group">
-			 							<label>Scope Of Works</label> 
-		 								<select class="form-control m-b" v-model="opt" v-on:change='data.Job_Hours=opt.Hours;data.Job_SOW=opt.Name' :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
-		 									<option selected >{{data.Job_SOW}}</option>
-	                                        <option v-for="option in sow" :value=option v-if='option.GroupName=== data.Job_Type'>{{option.Name}}</option>                                       
-	                                    </select>
-			 							<label>Job Detail</label> <input type="text" v-model="data.Job_detail" placeholder="รายละเอียด" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
-			 							<label>Job Progress</label> <input type="number" v-model="data.Job_progress" placeholder="ความคืบหน้า" class="form-control" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'"" >
-			 							<label>Job status</label> 
-			 							<select class="form-control m-b" v-model="data.Job_status" >
-	                                        <option v-for="option in jobstatus">{{option}}</option>                                       
-	                                    </select>
-	                                    <label>Project Task Tack</label> 
-			 							<select class="form-control m-b" v-model="data.project" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'">
-	                                        <option v-for="option in project">{{option.Name}}</option>                                       
-	                                    </select>
-		 							</div>
-		 						<div>
-		 							<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="update">
-		 								<strong>Update</strong>
-		 							</button>
-		 							
-		 						</div>
-		 					
-		 				</div>
-		 			</div>
-		 		</div>
-		 	</div>
-		 </div>
-		
-		 `,
-		 data: function () {
-			    return {
-			    	ahref:'#',
-			    	sow:null,
-			    	opt:null,
-			    	project:null,
-			    	jobstatus:[
-			    		'Open',
-			    		'On Progress',
-			    		'Completed',
-			    		'Cancel'
-			    	],
-			    }
-		 },
-		 methods: {
-			 update:function(){
-				 this.data.modify_date=new Date();
-				 if (this.data.Job_status==='Completed'){
-					 this.data.Completed_date=new Date();
-					 this.data.Job_progress=100;
-				 }
-				
-		    	 this.$http.post('/api/timesheets/'+this.data.id+'/replace',this.data)
-		    	  //$('#'+this.name+this.data.id).modal('hide')
-		    	  //location.href = "/"
-				 location.href = "/"
-		      },
-		      sethour: function(){
-		    	  this.data.Hours=this.sow.Hours.filter(function (n){
-		    		  return n.Name=="Guide line";
-		    	  });
-		      },
-		      getsow: function(){
-		            this.$http.get('/api/sows').then(function(response){
-		                this.sow = response.data;
-		            }, function(error){
-		                console.log(error.statusText);
-		            });
-		        },
-		        getproject: function(){
-		            this.$http.get('/api/projects').then(function(response){
-		                this.project = response.data.filter(function (n){
-		                    return n.status=='Open' || n.Job_status=='Progress';
-		                });
-		            }, function(error){
-		                console.log(error.statusText);
-		            });
-		        }
-		    },
-		    mounted: function () {
-		    	this.getsow();
-		    	this.opt=this.data.Job_SOW;
-		    	this.getproject();
-		    }
-	})
+
 
 Vue.component('delete', {
 	props:['name','data'],
@@ -440,9 +429,14 @@ Vue.component('c-form', {
 		 							<label>Job Name</label> <input type="string" v-model="timesheet.Job_Header" placeholder="หัวข้องาน"  class="form-control">
 		 							<label>Job Detail</label> <input type="string" v-model="timesheet.Job_detail" placeholder="รายละเอียด" class="form-control">
 		 							<label>Job Type</label> 
-		 							<select class="form-control m-b" v-model="timesheet.Job_Type">
+		 							<select class="form-control m-b" v-model="timesheet.Job_Type" v-on:change="list=sowlist.filter(data => data.GroupName == timesheet.Job_Type)">
                                         <option v-for="option in jobtype">{{option.Name}}</option>                                       
                                     </select>
+                                    <label>Scope</label> 
+		 							<select class="form-control m-b" v-model="timesheet.Job_SOW" v-on:change="">
+                                        <option v-for="option in list">{{option.Name}}</option>                                       
+                                    </select>
+                                    <label>Work Hours</label> {{timesheet.Job_Hours}}<p> 
                                     <label>Deadline</label> <input type="date" v-model="timesheet.Job_date" placeholder="วันส่งงาน" class="form-control">
                                     
 		 						</div>		
@@ -450,39 +444,30 @@ Vue.component('c-form', {
 		 						<div class="col-sm-6">
 		 							<div class="form-group">
 		 							<label>Base On Technology</label>
-		 								<select class="form-control" multiple="" v-model="timesheet.Base_Technology">
+		 								<select class="form-control" size="7" multiple="" v-model="timesheet.Base_Technology">
 		 									<option v-for="option in tech">{{option.Name}}</option>
 		 								</select>
 		 							<label>Brands</label>
-		 								<select class="form-control" multiple="" v-model="timesheet.Brands">
+		 								<select class="form-control" size="10" multiple="" v-model="timesheet.Brands">
 		 									<option v-for="option in brands">{{option.Name}}</option>
 		 								</select>
-		 							<label>Add contact</label>
-		 								<select class="form-control" multiple="" v-model="timesheet.contract">
-		 									<option v-for="option in timesheet.contract">{{option}}</option>
-		 								</select>
-		 								
-		 									<input type="string" v-model="newct" placeholder="รายละเอียดผู้ติดต่อ" class="form-control" >
-		 							</div>
-		 								<div>
-		 									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="addct">
-		 										<strong>Add contact</strong>
-		 									</button>
-		 								</div>
+		 							
 		 							
 		 							<br><br>
 		 						</div>
+		 					</div>
+		 				</div>
+		 				<hr>
 		 						<div>
 		 							<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="addjob">
 		 								<strong>Add Job</strong>
 		 							</button>
-		 						</div>
-		 					
-		 				</div>
-		 			</div>
+		 						</div>		 				
+		 			
 		 		</div>
 		 	</div>
 		 </div>
+		</div>
 		 `,
 		 data: function () {
 			    return {
@@ -491,6 +476,8 @@ Vue.component('c-form', {
 			    	brands:null,
 			    	jobtype:null,
 			    	tech:null,
+			    	list:null,
+			    	sowlist:null,
 			    	timesheet:{
 			    	    "Name_Surname": "",
 			    	    "Job_Type": "",
@@ -555,6 +542,13 @@ Vue.component('c-form', {
 			     addct:function(){
 			    	 //this.timesheet.Job_Hours+=1;
 			    	 this.timesheet.contract.push(this.newct);
+			     },
+			     getsow:function(){
+			    	 this.$http.get('/api/sows').then(function(response){
+			                this.sowlist = response.data;
+			            }, function(error){
+			                console.log(error.statusText);
+			            });
 			     }
 			       
 			    },
@@ -563,6 +557,7 @@ Vue.component('c-form', {
 			        this.getBrands();
 			        this.getjobtype();
 			        this.gettech();
+			        this.getsow();
 			    }
 			})
 
