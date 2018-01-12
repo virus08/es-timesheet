@@ -34,7 +34,400 @@ Vue.component('test', {
 
 
  */
+/*===================================================================================================*/
+Vue.component('project', { 
+	 props: ['uid'],
+	 template: `
+	 <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content animated fadeInUp">
 
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>All projects table</h5>
+                            <div class="ibox-tools">
+                                <a data-toggle="modal" href="#edit-form" class="btn btn-primary btn-xs">Create new project</a>
+                            </div>
+                            <div id="edit-form" class="modal fade" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div class="row">
+							
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="project-list">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <td class="project-status">
+                                            <span class="label label-primary">Active</span>
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="project_detail.html">Contract with Zender Company</a>
+                                            <br/>
+                                            <small>Created 14.08.2014</small>
+                                        </td>
+                                        <td class="project-completion">
+                                                <small>Completion with: 48%</small>
+                                                <div class="progress progress-mini">
+                                                    <div style="width: 48%;" class="progress-bar"></div>
+                                                </div>
+                                        </td>
+                                        <td class="project-people">
+                                            <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+                                            <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
+                                            <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
+                                            <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
+                                            <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 `,
+	 data: function () {
+	    return {
+	    	//list: null
+	    }
+	  },
+	  methods: {
+		  
+	    },
+	    mounted: function () {
+	        
+	    }
+	})
+
+
+/*====================================================================================================*/
+Vue.component('dashboard', { 
+	 // props: ['source'],
+	 
+	 data: function () {
+	    return {
+	    	
+	    }
+	  },
+	  methods: {
+		  
+	  },
+	  mounted: function () {
+		  
+	  },
+	  template: `
+	  <div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">Monthly</span>
+                        <h5>Views</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">386,200</h1>
+                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                        <small>Total views</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">Annual</span>
+                        <h5>Orders</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">80,800</h1>
+                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                        <small>New orders</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Today</span>
+                        <h5>Vistits</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="no-margins">$ 406,420</h1>
+                                <div class="font-bold text-navy">44% <i class="fa fa-level-up"></i> <small>Rapid pace</small></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h1 class="no-margins">206,120</h1>
+                                <div class="font-bold text-navy">22% <i class="fa fa-level-up"></i> <small>Slow pace</small></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Monthly income</h5>
+                        <div class="ibox-tools">
+                            <span class="label label-primary">Updated 12.2015</span>
+                        </div>
+                    </div>
+                    <div class="ibox-content no-padding">
+                        <div class="flot-chart m-t-lg" style="height: 55px;">
+                            <div class="flot-chart-content" id="flot-chart1"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div>
+                                        <span class="pull-right text-right">
+                                        <small>Average value of sales in the past month in: <strong>United states</strong></small>
+                                            <br/>
+                                            All sales: 162,862
+                                        </span>
+                            <h3 class="font-bold no-margins">
+                                Half-year revenue margin
+                            </h3>
+                            <small>Sales marketing.</small>
+                        </div>
+
+                        <div class="m-t-sm">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div>
+                                        <canvas id="lineChart" height="114"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul class="stat-list m-t-lg">
+                                        <li>
+                                            <h2 class="no-margins">2,346</h2>
+                                            <small>Total orders in period</small>
+                                            <div class="progress progress-mini">
+                                                <div class="progress-bar" style="width: 48%;"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h2 class="no-margins ">4,422</h2>
+                                            <small>Orders in last month</small>
+                                            <div class="progress progress-mini">
+                                                <div class="progress-bar" style="width: 60%;"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="m-t-md">
+                            <small class="pull-right">
+                                <i class="fa fa-clock-o"> </i>
+                                Update on 16.07.2015
+                            </small>
+                            <small>
+                                <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-warning pull-right">Data has changed</span>
+                        <h5>User activity</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">Pages / Visit</small>
+                                <h4>236 321.80</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% New Visits</small>
+                                <h4>46.11%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">Last week</small>
+                                <h4>432.021</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">Pages / Visit</small>
+                                <h4>643 321.10</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% New Visits</small>
+                                <h4>92.43%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">Last week</small>
+                                <h4>564.554</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">Pages / Visit</small>
+                                <h4>436 547.20</h4>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">% New Visits</small>
+                                <h4>150.23%</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">Last week</small>
+                                <h4>124.990</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+	</div>
+	  `,
+	})
+
+/*====================================================================================================*/
+
+Vue.component('Timesheet1', {
+	 props: ['source','uid'],
+	 template: `<div>
+		 	<div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>New Timesheet table</h5>
+	                        <div class="ibox-tools">
+	                            <!-- <a class="collapse-link"> <i class="fa fa-chevron-up"></i></a> -->
+	                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                                <i class="fa fa-wrench"></i>
+	                            </a>
+	                            <ul class="dropdown-menu dropdown-user">
+	                                <li><a href="#">Config Option 1</a> </li>
+	                                <!-- <li><a href="#">Config Option 2</a> </li> --> 
+	                            </ul>
+	                            	<!--  <a class="close-link"> <i class="fa fa-times"></i> </a> -->
+	                        </div>
+                        </div>
+                        <div class="ibox-content">
+                         <div class="table-responsive">
+                         	<vue-test-table />
+		 					 <New_Job name='#newjob-form' :UID=uid />
+		 					 <xedit :source="source" />
+                         </div> 		 				
+                        </div>
+                    </div>
+                </div>
+            </div>
+		 </div>
+		
+	 `,
+	 data: function () {
+	    return {}
+	  },
+	 methods: {}
+	});
+
+Vue.component('vue-test-table', {
+  data: function () {
+	    return {
+	    	datasource: null
+	    }
+	  },
+  mounted: function () {
+	  this.mounttable();
+  },
+  methods: {
+	  mounttable:function(){
+		  var url  = "/api/timesheets";
+		  var datatable=[];
+		  var xhr  = new XMLHttpRequest()
+		  xhr.open('GET', url, false)
+		  xhr.onload = function () {
+		  	var data = JSON.parse(xhr.responseText);
+		  	if (xhr.readyState == 4 && xhr.status == "200") {
+		  		datatable= data;
+		  	} else {
+		  		console.error(data);
+		  	}
+		  }
+		  xhr.send(null);
+		  var vueTestTable = [];
+		  //this.datasourcs=Vuelib.datatable
+		  datatable.forEach(function(entry){
+			  var temparray=[];
+			  var lender=`<a data-toggle="modal" class="btn btn-primary" href="#modal-form`+entry.id+`">Edit</a>	`;
+			  var xdate = moment(String(entry.Job_date)).format('DD MMM YY')
+			  if(entry.UID==Vuelib.UID){
+				  temparray.push(entry.Job_Header);
+				  temparray.push(entry.Job_detail);
+				  temparray.push(entry.Job_Hours);
+				  temparray.push(xdate);
+				  temparray.push(entry.Job_progress);
+				  temparray.push(entry.Job_status);
+				  temparray.push(lender);
+				  vueTestTable.push(temparray);
+				  
+			  }			  
+			});
+		  Vuelib.table = $('.vue-test-table').dataTable({"order": [[ 3, "desc" ]],responsive: true,"data": vueTestTable,"dom": 'l<"clear">frtip'});
+	  }
+  },  
+  template: `
+	  <div>
+	  <table class="table table-striped table-bordered table-hover vue-test-table" >
+	  	 <thead>
+	  	   <tr>
+                <th>Job Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>Detail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>Hours</th>
+                <th>Deadline</th>
+                <th>Progress</th>
+                <th>Status</th>
+                <th data-orderable="false">Action</th>
+            </tr>
+          </thead>
+	  </table>
+	  
+	 </div>
+  `
+});
 
 
 Vue.component('edit-model', {
@@ -54,7 +447,7 @@ Vue.component('edit-model', {
 	},methods: {
 		fdel:function(){
 			this.$http.delete('/api/timesheets/'+this.data.id)
-	    	location.href = "/";
+	    	location.reload();
 		},
 		update:function(){
 			 this.data.modify_date=new Date();
@@ -65,21 +458,21 @@ Vue.component('edit-model', {
 			
 	    	 this.$http.post('/api/timesheets/'+this.data.id+'/replace',this.data)
 	    	  //$('#modal-form'+this.xid).modal('hide')
-	    	 location.href = "/"
+	    	 location.reload()
 	      },
-	      sethour: function(){
+	    sethour: function(){
 	    	  this.data.Hours=this.sow.Hours.filter(function (n){
 	    		  return n.Name=="Guide line";
 	    	  });
 	      },
-	      getsow: function(){
+	    getsow: function(){
 	            this.$http.get('/api/sows').then(function(response){
 	                this.sow = response.data;
 	            }, function(error){
 	                console.log(error.statusText);
 	            });
 	        },
-	        getproject: function(){
+	    getproject: function(){
 	            this.$http.get('/api/projects').then(function(response){
 	                this.project = response.data.filter(function (n){
 	                    return n.status=='Open' || n.Job_status=='Progress';
@@ -170,111 +563,6 @@ Vue.component('edit-model', {
 	`
 });
 
-Vue.component('Timesheet1', {
-	 props: ['source','uid'],
-	 template: `<div>
-		 	<div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>New Timesheet table</h5>
-	                        <div class="ibox-tools">
-	                            <!-- <a class="collapse-link"> <i class="fa fa-chevron-up"></i></a> -->
-	                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                                <i class="fa fa-wrench"></i>
-	                            </a>
-	                            <ul class="dropdown-menu dropdown-user">
-	                                <li><a href="#">Config Option 1</a> </li>
-	                                <!-- <li><a href="#">Config Option 2</a> </li> --> 
-	                            </ul>
-	                            	<!--  <a class="close-link"> <i class="fa fa-times"></i> </a> -->
-	                        </div>
-                        </div>
-                        <div class="ibox-content">
-                         <div class="table-responsive">
-                         	<vue-test-table />
-		 					 <New_Job name='#newjob-form' :UID=uid />
-		 					 <xedit :source="source" />
-                         </div> 		 				
-                        </div>
-                    </div>
-                </div>
-            </div>
-		 </div>
-		
-	 `,
-	 data: function () {
-	    return {}
-	  },
-	  methods: {}
-	});
-
-Vue.component('vue-test-table', {
-  data: function () {
-	    return {
-	    	datasource: null
-	    }
-	  },
-  mounted: function () {
-	  this.mounttable();
-  },
-  methods: {
-	  mounttable:function(){
-		  var url  = "/api/timesheets";
-		  var datatable=[];
-		  var xhr  = new XMLHttpRequest()
-		  xhr.open('GET', url, false)
-		  xhr.onload = function () {
-		  	var data = JSON.parse(xhr.responseText);
-		  	if (xhr.readyState == 4 && xhr.status == "200") {
-		  		datatable= data;
-		  	} else {
-		  		console.error(data);
-		  	}
-		  }
-		  xhr.send(null);
-		  var vueTestTable = [];
-		  //this.datasourcs=Vuelib.datatable
-		  datatable.forEach(function(entry){
-			  var temparray=[];
-			  var lender=`<a data-toggle="modal" class="btn btn-primary" href="#modal-form`+entry.id+`">Edit</a>	`;
-			  var xdate = moment(String(entry.Job_date)).format('DD MMM YY')
-			  if(entry.UID==Vuelib.UID){
-				  temparray.push(entry.Job_Header);
-				  temparray.push(entry.Job_detail);
-				  temparray.push(entry.Job_Hours);
-				  temparray.push(xdate);
-				  temparray.push(entry.Job_progress);
-				  temparray.push(entry.Job_status);
-				  temparray.push(lender);
-				  vueTestTable.push(temparray);
-				  
-			  }			  
-			});
-		  Vuelib.table = $('.vue-test-table').dataTable({"order": [[ 3, "desc" ]],responsive: true,"data": vueTestTable,"dom": 'l<"clear">frtip'});
-	  }
-  },  
-  template: `
-	  <div>
-	  <table class="table table-striped table-bordered table-hover vue-test-table" >
-	  	 <thead>
-	  	   <tr>
-                <th>Job Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                <th>Detail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                <th>Hours</th>
-                <th>Deadline</th>
-                <th>Progress</th>
-                <th>Status</th>
-                <th data-orderable="false">Action</th>
-            </tr>
-          </thead>
-	  </table>
-	  
-	 </div>
-  `
-});
-
-
 
 Vue.component('xedit', {
 	 props: ['source'],
@@ -299,49 +587,7 @@ Vue.component('xedit', {
 	        this.getUsers();
 	    }
 	})
-
-Vue.component('allTimesheet', {
-	 props: ['source','uid'],
-	 template: `
-	 <div>
-		 <div class="row">
-		 	<div class="col-lg-12">
-		 		<div class="ibox float-e-margins">
-		 			<div class="ibox-title">
-		 				<h5>Time sheet</h5>
-		 			</div>
-		 			<div class="ibox-content">
-		 				<div class="table-responsive">
-		 					<test :source="source" />
-		 				</div>
-                   </div>
-		 		</div>                 
-		 	</div>
-		 </div>
-	</div>
-
-	 `,
-	 data: function () {
-	    return {
-	    	list: null
-	    }
-	  },
-	  methods: {
-		  getUsers: function(){
-	            this.$http.get(this.source).then(function(response){
-	            	var uid=parseInt(this.uid);
-	                this.list = response.data.filter(function (n){
-	                    return n.UID===uid && (n.Job_status=='Cancel' || n.Job_status=='Completed');
-	                });
-	            }, function(error){
-	                console.log(error.statusText);
-	            });
-	        }
-	    },
-	    mounted: function () {
-	        this.getUsers();
-	    }
-	});
+/*====================================================================================================*/
 
 
 Vue.component('New_Job', {
@@ -355,64 +601,6 @@ Vue.component('New_Job', {
 		 </div>
 		 `
 	})
-
-
-	
-
-
-Vue.component('delete', {
-	props:['name','data'],
-	 template: 
-		 `
-		<div class="col-md-3">
-			<div class="text-center">
-				<a data-toggle="modal" class="btn btn-primary btn-sm" :href=ahref+name+data.id>
-				 <i class="fa fa-eraser"></i>
-				 </a>
-			</div>
-		 	<div :id=name+data.id class="modal fade" aria-hidden="true">
-		 		<div class="modal-dialog">
-		 			<div class="modal-content">
-		 				<div class="modal-body">
-		 					<div class="row">
-		 						<div> คุณต้องการลบ </div>
-		 							{{data}}
-		 						<div class="pull-right" >
-		 							<button class="btn btn-danger dim" type="button"  v-on:click="Cancel">
-		 								<i class="fa fa-times"></i>
-		 							</button>
-		 							<button class="btn btn-danger dim" type="button"  v-on:click="Submit">
-		 								<i class="fa fa-check"></i>
-		 							</button>
-		 					</div>
-		 				</div>
-		 			</div>
-		 		</div>
-		 	</div>
-		 </div>
-		
-		 `,
-		 data: function () {
-			    return {
-			    	ahref:'#'
-			    }
-		 },
-		 methods: {
-			 Cancel:function(){
-		    	  //this.$http.post('/api/timesheets',this.timesheet)
-		    	  //$('#'+this.name+this.data.id).modal('hide')
-		    	  //location.href = "/"
-				 location.href = "/"
-		      },
-		      Submit:function(){
-		    	 this.$http.delete('/api/timesheets/'+this.data.id)
-		    	 location.href = "/";
-		     }
-		       
-		    }
-	})
-	
-
 	
 Vue.component('c-form', {
 	 props: ['f_id','f_name','f_detail','profile'],
@@ -433,10 +621,10 @@ Vue.component('c-form', {
                                         <option v-for="option in jobtype">{{option.Name}}</option>                                       
                                     </select>
                                     <label>Scope</label> 
-		 							<select class="form-control m-b" v-model="timesheet.Job_SOW" v-on:change="timesheet.Job_Hours=">
+		 							<select class="form-control m-b" v-model="timesheet.Job_SOW" v-on:change="timesheet.Job_Hours=sowlist.filter(data => data.Name == timesheet.Job_SOW)[0].Hours;">
                                         <option v-for="option in list">{{option.Name}}</option>                                       
                                     </select>
-                                    <label>Work Hours</label> {{timesheet.Job_Hours}}<p> 
+                                    <label>Work Hours</label> {{timesheet.Job_Hours}}<br> 
                                     <label>Deadline</label> <input type="date" v-model="timesheet.Job_date" placeholder="วันส่งงาน" class="form-control">
                                     
 		 						</div>		
@@ -469,7 +657,8 @@ Vue.component('c-form', {
 		 </div>
 		</div>
 		 `,
-		 data: function () {
+	 data: function () {
+			 	var isdate = Date.now();
 			    return {
 			    	user: null,
 			    	newct:null,
@@ -486,9 +675,9 @@ Vue.component('c-form', {
 			    	    "UID": 1,
 			    	    "Job_Header": "",
 			    	    "Job_detail": "",
-			    	    "create_date": "",
-			    	    "Job_date": "",
-			    	    "modify_date": "",
+			    	    "create_date": isdate,
+			    	    "Job_date": isdate,
+			    	    "modify_date": isdate,
 			    	    "Job_Hours": 0,
 			    	    "Job_progress": 0,
 			    	    "contract": [],
@@ -500,67 +689,69 @@ Vue.component('c-form', {
 			    	  }			    	
 			    }
 			  },
-			  methods: {
-				  getUsers: function(){
-			            this.$http.get(this.profile).then(function(response){
-			                this.user = response.data;
-			                this.timesheet.Name_Surname= this.user.Name+' '+this.user.Sname
-			                this.timesheet.UID= this.user.uid
-			                this.timesheet.create_date=new Date()
-			                this.timesheet.modify_date=this.timesheet.create_date
-			            }, function(error){
-			                console.log(error.statusText);
-			            });
-			        },
-			        getBrands: function(){
-			            this.$http.get('/api/brands').then(function(response){
-			                this.brands = response.data;
-			            }, function(error){
-			                console.log(error.statusText);
-			            });
-			        },
-			        getjobtype: function(){
-			            this.$http.get('/api/jobtypes').then(function(response){
-			                this.jobtype = response.data;
-			            }, function(error){
-			                console.log(error.statusText);
-			            });
-			        },
-			        gettech: function(){
-			            this.$http.get('/api/teches').then(function(response){
-			                this.tech = response.data;
-			            }, function(error){
-			                console.log(error.statusText);
-			            });
-			        },
-			      addjob:function(){
-			    	  this.$http.post('/api/timesheets',this.timesheet)
-			    	  $('#'+this.f_id).modal('hide')
-			    	  location.href = "/"
-			    	  this.$emit('AddJob')
-			      },
-			     addct:function(){
-			    	 //this.timesheet.Job_Hours+=1;
-			    	 this.timesheet.contract.push(this.newct);
-			     },
-			     getsow:function(){
-			    	 this.$http.get('/api/sows').then(function(response){
-			                this.sowlist = response.data;
-			            }, function(error){
-			                console.log(error.statusText);
-			            });
-			     }
+	 methods: {
+		 getUsers: function(){
+			 this.$http.get(this.profile).then(function(response){
+				 this.user = response.data;
+				 this.timesheet.Name_Surname= this.user.Name+' '+this.user.Sname
+				 this.timesheet.UID= this.user.uid
+				 this.timesheet.create_date=new Date()
+				 //this.timesheet.Job_date = this.timesheet.create_date
+				 this.timesheet.modify_date=this.timesheet.create_date
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 },
+		 getBrands: function(){
+			 this.$http.get('/api/brands').then(function(response){
+				 this.brands = response.data;
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 },
+		 getjobtype: function(){
+			 this.$http.get('/api/jobtypes').then(function(response){
+				 this.jobtype = response.data;
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 },
+		 gettech: function(){
+			 this.$http.get('/api/teches').then(function(response){
+				 this.tech = response.data;
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 },
+		 addjob:function(){
+			 this.$http.post('/api/timesheets',this.timesheet)
+			 $('#'+this.f_id).modal('hide')
+			 location.reload();
+			 this.$emit('AddJob')
+		 },
+		 addct:function(){
+			 //this.timesheet.Job_Hours+=1;
+			 this.timesheet.contract.push(this.newct);
+		 },
+		 getsow:function(){
+			 this.$http.get('/api/sows').then(function(response){
+				 this.sowlist = response.data;
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 }
 			       
-			    },
-			    mounted: function () {
-			        this.getUsers();
-			        this.getBrands();
-			        this.getjobtype();
-			        this.gettech();
-			        this.getsow();
-			    }
-			})
-
+	},
+	mounted: function () {
+		this.getUsers();
+		this.getBrands();
+		this.getjobtype();
+		this.gettech();
+		this.getsow();
+	}
+});
+			
+/*====================================================================================================*/
 Vue.component('profile', {
   props: ['source'],
   // just like data, the prop can be used inside templates
@@ -612,7 +803,7 @@ Vue.component('profile', {
 `
 });
 
-
+/*====================================================================================================*/
 
 Vue.component('header-layout',{
 	template:`

@@ -101,15 +101,15 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 	routes:[{ 
 		path: '/',
 		component: { 
-			template: '<Timesheet1 source="/api/timesheets" uid='+req.user.id+'></Timesheet1>' 
+			template: '<dashboard/>'
 		}},{ 
-		path: '/all',
+		path: '/Timesheet',
 		component: { 
-			template: '<allTimesheet source="/api/timesheets" uid='+req.user.id+'> </allTimesheet>' 
+			template: '<Timesheet1 source="/api/timesheets" uid='+req.user.id+'></Timesheet1>' 
 			}},{ 
-		path: '/conf',
+		path: '/Project',
 		component: { 
-			template: '<conf uid='+req.user.id+' uname='+req.user.username+' ></conf>' 
+			template: '<project uid= '+req.user.id+' />' 
 		}}
 		],
 		userapps:[
@@ -120,11 +120,15 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 				menus:[
 				{
 					href:'#/',
-					label:'Active Timesheet'
+					label:'Dashboard'
 				},{
-					href:'#/all',
-					label:'All Timesheet'
-				}],
+					href:'#/Timesheet',
+					label:'Timesheet'
+				},{
+					href:'#/Project',
+					label:'Project'
+				}
+				],
 			}
 		]
   });
