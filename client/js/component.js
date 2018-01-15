@@ -35,6 +35,77 @@ Vue.component('test', {
 
  */
 /*===================================================================================================*/
+Vue.component('delete-project', { 
+	 props: ['dataentry','uid'],
+	 data: function () {
+			var isdate = new Date();
+			var tmplist=[];
+			if(this.dataentry.Type=='Internal'){
+				tmplist=["Open","Progress","Completed","Defective","Cancel"];
+			}else{tmplist=["Open","Progress","Win","Lost","Cancel"];}
+		    return {	    	
+		    	statuslist:[
+		    		{"type":"Internal","list":["Open","Progress","Completed","Defective","Cancel"]},
+		    		{"type":"External","list":["Open","Progress","Win","Lost","Cancel"]}
+		    	],
+		    	optstatus: tmplist
+		    }
+		  },
+		  methods: {
+			  Cancel :function(){
+				  location.reload();			  
+			  },
+			  Confirm :function(){
+				  this.$http.delete('/api/projects/'+this.dataentry.id)
+				  location.reload();			  
+			  }
+		    },
+	 template: `
+		 <div>
+		 	<div class="ibox-tools">
+		 		<a data-toggle="modal" :href="'#delete-form'+dataentry.id" class="btn btn-primary btn-xs">Delete</a>
+		 	</div>
+		 	<div :id="'delete-form'+dataentry.id" class="modal fade" aria-hidden="true">
+		 		<div class="modal-dialog">
+		 			<div class="modal-content">
+		 				<div class="modal-body">
+		 					<div class="row">
+		 						<div class="form-group">
+		 							<label>Project Name</label> <input disabled type="string" v-model="dataentry.Name" placeholder="ชื่อโครงการ"  class="form-control">
+		 							<label>Project Description</label> <input disabled type="string" v-model="dataentry.Desc" placeholder="รายละเอียดโครงการ"  class="form-control">
+		 							<label>Type</label>
+		 							<select disabled class="form-control m-b" v-model="dataentry.Type" placeholder="ประเภท" v-on:change="optstatus=statuslist.filter(o => o.type == dataentry.Type)[0].list">
+		 								<option>Internal</option> 
+		 								<option>External</option>                                         
+		 							</select>
+		 							<label>Status</label>
+			 						<select disabled class="form-control m-b" v-model="dataentry.Status" placeholder="สถานะ" v-on:change="">
+			 							<option v-for="option in optstatus">{{option}}</option> 
+			 						</select>
+			 					</div>
+		 					</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6" />
+								<div class="col-sm-3">
+								<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="Cancel">
+										<strong>Cancel</strong>
+									</button>  
+								</div>
+								<div class="col-sm-3">
+									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="Confirm">
+										<strong>Confirm</strong>
+									</button>  
+								</div>											
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`,
+})
+
 Vue.component('edit-project', { 
 	 props: ['dataentry','uid'],
 	 data: function () {
@@ -138,7 +209,13 @@ Vue.component('project-item',{
                                     <span class="small font-bold">Summary Job </span><p>{{list.filter(o => o.Projid == dataitem.id).length}}</p><br/>
                                 </div>
 								<div class="col-md-2">
-									<edit-project :dataentry=dataitem />
+									<div class= "col-md-4"/>
+									<div class= "col-md-5">
+										<delete-project :dataentry=dataitem v-if="!list.filter(o => o.Projid == dataitem.id).length" />
+									</div>
+									<div class= "col-md-3">
+										<edit-project :dataentry=dataitem />
+									</div>									
                                 </div>
                             </div>
                             <div class="row">

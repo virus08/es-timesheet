@@ -13,7 +13,7 @@
     "jobtype": 14,
     "tech": 8,
     "sow": 55,
-    "project": 5
+    "project": 6
   },
   "models": {
     "user": {
@@ -73,10 +73,10 @@
       "22": "{\"Name\":\"Theerayut\",\"uid\":22,\"Sname\":\"Thongyoy\",\"position\":\"Pre-Sales\",\"picture\":\"img/profile_small.jpg\",\"id\":22}"
     },
     "timesheet": {
-      "4": "{\"id\":4,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Request of proposal\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test1\",\"Job_detail\":\"test2\",\"create_date\":\"2018-01-12T12:14:35.886Z\",\"Job_date\":\"2018-01-12T00:00:00.000Z\",\"modify_date\":\"2018-01-14T11:04:41.499Z\",\"Job_Hours\":8,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"],\"Projid\":\"\"}",
-      "5": "{\"id\":5,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"BoM\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test2\",\"Job_detail\":\"test\",\"create_date\":\"2018-01-12T12:15:57.501Z\",\"Job_date\":\"2018-01-12T00:00:00.000Z\",\"modify_date\":\"2018-01-14T11:04:44.797Z\",\"Job_Hours\":4,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Fireeye\"],\"Projid\":\"\"}",
+      "4": "{\"id\":4,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Request of proposal\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test1\",\"Job_detail\":\"test2\",\"create_date\":\"2018-01-12T12:14:35.886Z\",\"Job_date\":\"2018-01-12T00:00:00.000Z\",\"modify_date\":\"2018-01-15T02:15:00.427Z\",\"Job_Hours\":8,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Completed\",\"remark\":[\"0\"],\"Brands\":[\"Bluecoat\"],\"Projid\":2,\"Completed_date\":\"2018-01-15T02:15:00.427Z\"}",
+      "5": "{\"id\":5,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"BoM\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test2\",\"Job_detail\":\"test\",\"create_date\":\"2018-01-12T12:15:57.501Z\",\"Job_date\":\"2018-01-12T00:00:00.000Z\",\"modify_date\":\"2018-01-15T02:15:04.117Z\",\"Job_Hours\":4,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Completed\",\"remark\":[\"0\"],\"Brands\":[\"Fireeye\"],\"Projid\":2,\"Completed_date\":\"2018-01-15T02:15:04.117Z\"}",
       "6": "{\"Name_Surname\":\"Nathaphon Kiatwonghong\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Request of proposal\",\"Base_Technology\":[\"Network\"],\"UID\":3,\"Job_Header\":\"tesr\",\"Job_detail\":\"tser\",\"create_date\":\"2018-01-12T12:17:30.193Z\",\"Job_date\":\"2018-01-12T00:00:00.000Z\",\"modify_date\":\"2018-01-12T12:17:30.193Z\",\"Job_Hours\":8,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Dell\"],\"Projid\":4,\"id\":6}",
-      "7": "{\"id\":7,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Technical of request\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test\",\"Job_detail\":\"ttt\",\"create_date\":\"2018-01-14T04:35:44.668Z\",\"Job_date\":\"2018-01-14T00:00:00.000Z\",\"modify_date\":\"2018-01-14T11:04:35.109Z\",\"Job_Hours\":1,\"Job_progress\":0,\"contract\":[],\"Job_status\":\"Open\",\"remark\":[\"0\"],\"Brands\":[\"Cloud\"],\"Projid\":\"\"}"
+      "7": "{\"id\":7,\"Name_Surname\":\"Wanchai Fuangmali\",\"Job_Type\":\"Documentation\",\"Job_SOW\":\"Technical of request\",\"Base_Technology\":[\"Security\"],\"UID\":1,\"Job_Header\":\"test\",\"Job_detail\":\"ttt\",\"create_date\":\"2018-01-14T04:35:44.668Z\",\"Job_date\":\"2018-01-14T00:00:00.000Z\",\"modify_date\":\"2018-01-15T02:14:52.265Z\",\"Job_Hours\":1,\"Job_progress\":100,\"contract\":[],\"Job_status\":\"Completed\",\"remark\":[\"0\"],\"Brands\":[\"Cloud\"],\"Projid\":2,\"Completed_date\":\"2018-01-15T02:14:52.265Z\"}"
     },
     "brand": {
       "1": "{\"Name\":\"Acronis\",\"emailVerified\":true,\"id\":1}",
@@ -186,8 +186,7 @@
       "54": "{\"GroupName\":\"Business Traveling\",\"Name\":\"Global Training\",\"Hours\":8,\"emailVerified\":true,\"id\":54}"
     },
     "project": {
-      "2": "{\"id\":2,\"Name\":\"โครงการอะไรซักอย่าง1\",\"Status\":\"Progress\",\"Desc\":\"ยังไม่มีหรอก1\",\"Type\":\"Internal\",\"UID\":1,\"Modify_date\":\"2018-01-15T00:57:54.919Z\",\"Create_date\":\"2018-01-12T08:43:50.246Z\"}",
-      "3": "{\"Name\":\"test1\",\"Status\":\"Open\",\"Desc\":\"test1\",\"Type\":\"Internal\",\"UID\":1,\"Modify_date\":\"2018-01-12T12:02:49.210Z\",\"Create_date\":\"2018-01-12T12:02:49.210Z\",\"id\":3}",
+      "2": "{\"id\":2,\"Name\":\"โครงการอะไรซักอย่าง\",\"Status\":\"Progress\",\"Desc\":\"ยังไม่มีหรอก\",\"Type\":\"Internal\",\"UID\":1,\"Modify_date\":\"2018-01-15T02:52:08.410Z\",\"Create_date\":\"2018-01-12T08:43:50.246Z\"}",
       "4": "{\"Name\":\"test23\",\"Status\":\"Open\",\"Desc\":\"tesrt\",\"Type\":\"Internal\",\"UID\":3,\"Modify_date\":\"2018-01-12T12:17:16.464Z\",\"Create_date\":\"2018-01-12T12:17:16.464Z\",\"id\":4}"
     }
   }
