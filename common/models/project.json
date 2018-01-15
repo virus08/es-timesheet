@@ -10,10 +10,25 @@
 			"type": "string",
 			"required": true
 		},
-		"status": {
+		"Status": {
 			"type": "string",
 			"required": true,
 			"default": "Open"
+		},
+		"Desc": {
+			"type": "string"			
+		},
+		"Type": {
+			"type": "string"			
+		},
+		"UID": {
+			"type": "number"			
+		},
+		"Modify_date": {
+			"type": "date"			
+		},
+		"Create_date": {
+			"type": "date"			
 		}
 	},
 	"validations": [],
