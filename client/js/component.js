@@ -35,6 +35,150 @@ Vue.component('test', {
 
  */
 /*===================================================================================================*/
+Vue.component('edit-project', { 
+	 props: ['dataentry','uid'],
+	 data: function () {
+			var isdate = new Date();
+			var tmplist=[];
+			if(this.dataentry.Type=='Internal'){
+				tmplist=["Open","Progress","Completed","Defective","Cancel"];
+			}else{tmplist=["Open","Progress","Win","Lost","Cancel"];}
+		    return {	    	
+		    	statuslist:[
+		    		{"type":"Internal","list":["Open","Progress","Completed","Defective","Cancel"]},
+		    		{"type":"External","list":["Open","Progress","Win","Lost","Cancel"]}
+		    	],
+		    	optstatus: tmplist
+		    }
+		  },
+		  methods: {
+			  update:function(){
+				  var isdate = new Date();
+				  this.dataentry.Modify_date=isdate;
+				  this.$http.put('/api/projects/'+this.dataentry.id,this.dataentry)
+				  location.reload();			  
+			  }
+		    },
+	 template: `
+		 <div>
+		 	<div class="ibox-tools">
+		 		<a data-toggle="modal" :href="'#edit-form'+dataentry.id" class="btn btn-primary btn-xs">Edit</a>
+		 	</div>
+		 	<div :id="'edit-form'+dataentry.id" class="modal fade" aria-hidden="true">
+		 		<div class="modal-dialog">
+		 			<div class="modal-content">
+		 				<div class="modal-body">
+		 					<div class="row">
+		 						<div class="form-group">
+		 							<label>Project Name</label> <input type="string" v-model="dataentry.Name" placeholder="ชื่อโครงการ"  class="form-control">
+		 							<label>Project Description</label> <input type="string" v-model="dataentry.Desc" placeholder="รายละเอียดโครงการ"  class="form-control">
+		 							<label>Type</label>
+		 							<select class="form-control m-b" v-model="dataentry.Type" placeholder="ประเภท" v-on:change="optstatus=statuslist.filter(o => o.type == dataentry.Type)[0].list">
+		 								<option>Internal</option> 
+		 								<option>External</option>                                         
+		 							</select>
+		 							<label>Status</label>
+			 						<select class="form-control m-b" v-model="dataentry.Status" placeholder="สถานะ" v-on:change="">
+			 							<option v-for="option in optstatus">{{option}}</option> 
+			 						</select>
+			 					</div>
+		 					</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-6" />
+								<div class="col-sm-3" />
+								<div class="col-sm-3">
+									<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="update">
+										<strong>Update</strong>
+									</button>  
+								</div>											
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`,
+})
+
+Vue.component('project-item',{
+	props: ['dataitem','uid'],
+	data: function () {
+	    return {
+	    	list: []
+	    }
+	},
+	methods: {
+		getlist: function(){
+			this.$http.get('/api/timesheets').then(function(response){
+				this.list = response.data;
+			}, function(error){
+				console.log(error.statusText);
+			});
+		}
+	},
+	mounted: function () {
+		this.getlist();
+	},
+	template:`<div class="faq-item">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <a data-toggle="collapse" :href="'#faq'+dataitem.id" class="faq-question">{{dataitem.Name}}</a> 
+                                    <p><small><strong>Detail:</strong>{{dataitem.Desc}}  Last Modify<i class="fa fa-clock-o"></i> {{dataitem.Modify_date |formatDate}}</small></p>                                    
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="small font-bold">Status</span>
+                                    <div class="tag-list">
+                                        <span class="tag-item">{{dataitem.Status}}</span>
+                                        <span class="tag-item">Priject id: ({{dataitem.id}})</span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="small font-bold">Summary Job </span><p>{{list.filter(o => o.Projid == dataitem.id).length}}</p><br/>
+                                </div>
+								<div class="col-md-2">
+									<edit-project :dataentry=dataitem />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div :id="'faq'+dataitem.id" class="panel-collapse collapse faq-answer">
+										<div class="row m-t-sm">
+											<div class="col-lg-12">
+												<div class="panel blank-panel">
+													<table class="table table-striped">
+								 						<thead>
+						                                	<tr>
+						                                    	<th>Status</th>
+						                                        <th>Job Owner</th>
+						                                        <th>Job Title</th> 	
+						                                        <th>Job Progress</th>
+						                                        <th>Jobid</th>
+								 							</tr>
+								 						</thead>
+						                            	<tbody>
+						                            	<tr v-for="entry in list.filter(o => o.Projid == dataitem.id)" >
+						                            		<td>{{entry.Job_status}}</td>
+						                            		<td>{{entry.Name_Surname}}</td>
+						                            		<td>{{entry.Job_Header}}</td>
+						                            		<td>{{entry.Job_progress}}</td>
+						                            		<td>{{entry.id}}</td>
+						                            	</tr>
+						                            	</tbody>
+						                            </table>
+						                          	
+												</div>
+											</div>
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+	`
+});
+
+
 Vue.component('project', { 
 	 props: ['uid'],
 	 template: `
@@ -46,14 +190,39 @@ Vue.component('project', {
                         <div class="ibox-title">
                             <h5>All projects table</h5>
                             <div class="ibox-tools">
-                                <a data-toggle="modal" href="#edit-form" class="btn btn-primary btn-xs">Create new project</a>
+                                <a data-toggle="modal" href="#edit-form" class="btn btn-primary btn-xs">New Project</a>
                             </div>
                             <div id="edit-form" class="modal fade" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-body">
 											<div class="row">
-							
+		 										<label>Project Name</label> <input type="string" v-model="newproject.Name" placeholder="ชื่อโครงการ"  class="form-control">
+		 										<label>Project Description</label> <input type="string" v-model="newproject.Desc" placeholder="รายละเอียดโครงการ"  class="form-control">
+		 										<label>Type</label>
+		 										<select class="form-control m-b" v-model="newproject.Type" placeholder="ประเภท" v-on:change="optstatus=statuslist.filter(o => o.type == newproject.Type)[0].list">
+                                        				<option>Internal</option> 
+                                        				<option>External</option>                                         
+                                   				</select>
+                                   				<label>Status</label>
+		 										<select class="form-control m-b" v-model="newproject.Status" placeholder="สถานะ" v-on:change="">
+                                        				<option v-for="option in optstatus">{{option}}</option> 
+                                        				                                         
+                                   				</select>
+												
+											</div>
+											<hr>
+											<div class="row">
+												<div class="col-sm-6">
+													
+												</div>
+												<div class="col-sm-3">
+												</div>
+												<div class="col-sm-3">
+													<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="addproject">
+				 										<strong>Add Project</strong>
+				 									</button> 
+												</div>											
 											</div>
 										</div>
 									</div>
@@ -61,55 +230,50 @@ Vue.component('project', {
 							</div>
                         </div>
                         <div class="ibox-content">
-                            <div class="project-list">
-                                <table class="table table-hover">
-                                    <tbody>
-                                    <tr>
-                                        <td class="project-status">
-                                            <span class="label label-primary">Active</span>
-                                        </td>
-                                        <td class="project-title">
-                                            <a href="project_detail.html">Contract with Zender Company</a>
-                                            <br/>
-                                            <small>Created 14.08.2014</small>
-                                        </td>
-                                        <td class="project-completion">
-                                                <small>Completion with: 48%</small>
-                                                <div class="progress progress-mini">
-                                                    <div style="width: 48%;" class="progress-bar"></div>
-                                                </div>
-                                        </td>
-                                        <td class="project-people">
-                                            <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                            <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                            <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                            <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                            <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
-                                        </td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            <project-item v-for="item in listproject" :dataitem=item :uid=uid />
+		 				</div>
                     </div>
                 </div>
             </div>
         </div>
 	 `,
 	 data: function () {
-	    return {
-	    	//list: null
+		var isdate = new Date();
+	    return {	    	
+	    	statuslist:[
+	    		{"type":"Internal","list":["Open","Progress","Completed","Defective","Cancel"]},
+	    		{"type":"External","list":["Open","Progress","Win","Lost","Cancel"]}
+	    	],
+	    	optstatus:null,
+	    	newproject: {
+	    		"Name": "",
+	    		"Status": "",
+	    		"Desc": "",
+	    		"Type": "",
+	    		"UID": this.uid,
+	    		"Modify_date": isdate,
+	    		"Create_date": isdate,
+	    	},
+	    	listproject:{}
 	    }
 	  },
 	  methods: {
-		  
+		  addproject:function(){
+			  //alert(JSON.stringify(this.newproject))
+			  this.$http.post('/api/projects',this.newproject)
+			  location.reload();			  
+		  },
+		  projectlist:function(){
+			  this.$http.get('/api/projects').then(function(response){
+	                this.listproject = response.data.filter(o => o.UID == this.uid);
+	            }, function(error){
+	                console.log(error.statusText);
+	            });
+			  //alert(JSON.stringify(this.listproject))
+		  }
 	    },
 	    mounted: function () {
-	        
+	    	this.projectlist();
 	    }
 	})
 
@@ -349,7 +513,7 @@ Vue.component('Timesheet1', {
                          <div class="table-responsive">
                          	<vue-test-table />
 		 					 <New_Job name='#newjob-form' :UID=uid />
-		 					 <xedit :source="source" />
+		 					 <xedit :source="source" :uid=uid />
                          </div> 		 				
                         </div>
                     </div>
@@ -375,6 +539,14 @@ Vue.component('vue-test-table', {
   },
   methods: {
 	  mounttable:function(){
+		  /*
+		  var datatable=[];
+		  this.$http.get('/api/timesheets').then(function(response){
+			  datatable = response.data;
+          }, function(error){
+              console.log(error.statusText);
+          });
+		  */
 		  var url  = "/api/timesheets";
 		  var datatable=[];
 		  var xhr  = new XMLHttpRequest()
@@ -388,6 +560,7 @@ Vue.component('vue-test-table', {
 		  	}
 		  }
 		  xhr.send(null);
+		  
 		  var vueTestTable = [];
 		  //this.datasourcs=Vuelib.datatable
 		  datatable.forEach(function(entry){
@@ -431,12 +604,13 @@ Vue.component('vue-test-table', {
 
 
 Vue.component('edit-model', {
-	props: ['xid','data'],
+	props: ['xid','data','uid'],
 	data: function () {
 	    return {
 	    	sow:null,
 	    	opt:null,
-	    	project:null,
+	    	project:[],
+	    	projectlist:[],
 	    	jobstatus:[
 	    		'Open',
 	    		'On Progress',
@@ -444,7 +618,8 @@ Vue.component('edit-model', {
 	    		'Cancel'
 	    	]
 	    }
-	},methods: {
+	},
+	methods: {
 		fdel:function(){
 			this.$http.delete('/api/timesheets/'+this.data.id)
 	    	location.reload();
@@ -474,9 +649,7 @@ Vue.component('edit-model', {
 	        },
 	    getproject: function(){
 	            this.$http.get('/api/projects').then(function(response){
-	                this.project = response.data.filter(function (n){
-	                    return n.status=='Open' || n.Job_status=='Progress';
-	                });
+	                this.project = response.data.filter(o => o.UID == this.uid);
 	            }, function(error){
 	                console.log(error.statusText);
 	            });
@@ -531,10 +704,11 @@ Vue.component('edit-model', {
 					 							<select class="form-control m-b" v-model="data.Job_status" >
 			                                        <option v-for="option in jobstatus">{{option}}</option>                                       
 			                                    </select>
-			                                    <label>Project Task Tack</label> 
-					 							<select class="form-control m-b" v-model="data.project" :disabled="data.Job_status == 'Completed'|| data.Job_status == 'Cancel'">
-			                                        <option v-for="option in project">{{option.Name}}</option>                                       
-			                                    </select>
+			                                    <label>Project-Track</label> 
+						 							<select class="form-control m-b" v-model="data.Projid">
+						 								<option value=""></option>
+				                                        <option v-for="option in project" :value=option.id >{{option.Name}}</option>                                       
+				                                    </select>
 				 							</div>
 				 						<div class="row">
 				 							<div class="col-sm-6"/>
@@ -565,9 +739,9 @@ Vue.component('edit-model', {
 
 
 Vue.component('xedit', {
-	 props: ['source'],
+	 props: ['source','uid'],
 	 template: `<div>
-		 			<edit-model v-for="data in list" :xid=data.id :data=data />
+		 			<edit-model v-for="data in list" :xid=data.id :data=data :uid=uid />
 		 		</div>`,
 	 data: function () {
 	    return {
@@ -577,7 +751,7 @@ Vue.component('xedit', {
 	  methods: {
 		  getUsers: function(){
 	            this.$http.get(this.source).then(function(response){
-	                this.list = response.data;
+	                this.list = response.data.filter(o => o.UID == this.uid);
 	            }, function(error){
 	                console.log(error.statusText);
 	            });
@@ -630,18 +804,21 @@ Vue.component('c-form', {
 		 						</div>		
 		 					</div>
 		 						<div class="col-sm-6">
+		 						
 		 							<div class="form-group">
-		 							<label>Base On Technology</label>
-		 								<select class="form-control" size="7" multiple="" v-model="timesheet.Base_Technology">
-		 									<option v-for="option in tech">{{option.Name}}</option>
-		 								</select>
-		 							<label>Brands</label>
-		 								<select class="form-control" size="10" multiple="" v-model="timesheet.Brands">
-		 									<option v-for="option in brands">{{option.Name}}</option>
-		 								</select>
+			 							<label>Project-Track</label> 
+			 							<select class="form-control m-b" v-model="timesheet.Projid">
+	                                        <option v-for="option in projectlist.filter(o => o.Status == 'Open'||o.Status == 'Progress' )" :value=option.id >{{option.Name}}</option>                                       
+	                                    </select>
+			 							<label>Base On Technology</label>
+			 								<select class="form-control" size="7" multiple="" v-model="timesheet.Base_Technology">
+			 									<option v-for="option in tech">{{option.Name}}</option>
+			 								</select>
+			 							<label>Brands</label>
+			 								<select class="form-control" size="10" multiple="" v-model="timesheet.Brands">
+			 									<option v-for="option in brands">{{option.Name}}</option>
+			 								</select>
 		 							
-		 							
-		 							<br><br>
 		 						</div>
 		 					</div>
 		 				</div>
@@ -650,6 +827,7 @@ Vue.component('c-form', {
 		 							<button class="btn btn-sm btn-primary pull-right m-t-n-xs" v-on:click="addjob">
 		 								<strong>Add Job</strong>
 		 							</button>
+		 						
 		 						</div>		 				
 		 			
 		 		</div>
@@ -667,6 +845,7 @@ Vue.component('c-form', {
 			    	tech:null,
 			    	list:null,
 			    	sowlist:null,
+			    	projectlist:[],
 			    	timesheet:{
 			    	    "Name_Surname": "",
 			    	    "Job_Type": "",
@@ -683,6 +862,7 @@ Vue.component('c-form', {
 			    	    "contract": [],
 			    	    "Brands":[],
 			    	    "Job_status": "Open",
+			    	    "Projid":"",
 			    	    "remark": [
 			    	      "0"
 			    	    ]
@@ -723,11 +903,18 @@ Vue.component('c-form', {
 				 console.log(error.statusText);
 			 });
 		 },
+		 getproj: function(){
+			 this.$http.get('/api/projects').then(function(response){
+				 this.projectlist = response.data.filter(o => o.UID == this.user.uid);
+			 }, function(error){
+				 console.log(error.statusText);
+			 });
+		 },
 		 addjob:function(){
 			 this.$http.post('/api/timesheets',this.timesheet)
 			 $('#'+this.f_id).modal('hide')
 			 location.reload();
-			 this.$emit('AddJob')
+			 //this.$emit('AddJob')
 		 },
 		 addct:function(){
 			 //this.timesheet.Job_Hours+=1;
@@ -748,6 +935,7 @@ Vue.component('c-form', {
 		this.getjobtype();
 		this.gettech();
 		this.getsow();
+		this.getproj();
 	}
 });
 			
