@@ -101,7 +101,7 @@ app.get('/',ensureLoggedIn('/local'), function(req, res, next) {
 	routes:[{ 
 		path: '/',
 		component: { 
-			template: '<dashboard/>'
+			template: '<dashboard uid= '+req.user.id+' />'
 		}},{ 
 		path: '/Timesheet',
 		component: { 

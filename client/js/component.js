@@ -34,6 +34,436 @@ Vue.component('test', {
 
 
  */
+/*====================================================================================================*/
+Vue.component('dashboard', { 
+	 props: ['uid'],
+	 
+	 data: function () {
+		
+	    return {
+	    	mytask:[],
+	    	newtask:0,
+	    	myproject:[],
+	    	newproj:0,
+	    	bar:[1,2,3,4,5,6,7,8,9,10,11,12]
+	    }
+	  },
+	  methods: {
+		  gettask:function(){			  
+			  this.$http.get('/api/timesheets').then(function(response){
+					this.mytask = response.data.filter(o => o.UID == this.uid);
+					this.newtask = this.mytask.filter(function(o){
+						var thisdate = new Date();
+						//var thismount = thisdate.getMonth();
+						//var thisyear = thisdate.getYear();
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String(thisdate)).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[0]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-01-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[1]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-02-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[2]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-03-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[3]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-04-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[4]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-05-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[5]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-06-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[6]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-07-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[7]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-08-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[8]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-09-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[9]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-10-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[10]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-11-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.bar[11]= this.mytask.filter(function(o){
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String('2018-12-01T00:00:00.00')).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					
+					this.createg();
+				}, function(error){
+					console.log(error.statusText);
+				});
+		  },
+		  getproject:function(){
+			  this.$http.get('/api/projects').then(function(response){
+					this.myproject = response.data.filter(o => o.UID == this.uid);
+					this.newproj = this.myproject.filter(function(o){
+						var thisdate = new Date();
+						//var thismount = thisdate.getMonth();
+						//var thisyear = thisdate.getYear();
+						var taskcreate= Date(o.create_date);
+						var m1= moment(String(taskcreate)).format('MMMM YYYY');
+						var m2 = moment(String(thisdate)).format('MMMM YYYY');
+						return  m1 == m2 ;
+					}).length
+					this.creategp();
+				}, function(error){
+					console.log(error.statusText);
+				});
+		  },
+		  creategp:function(){
+			  var data = [{
+			        label: "Open",
+			        data: this.myproject.filter(o => o.Status == 'Open').length
+			    }, {
+			        label: "Progress",
+			        data: this.myproject.filter(o => o.Status == 'Progress').length
+			    }, {
+			        label: "Completed",
+			        data: this.myproject.filter(o => o.Status == 'Completed').length
+			    },{
+			        label: "Defective",
+			        data: this.myproject.filter(o => o.Status == 'Defective').length
+			    },{
+			        label: "Win",
+			        data: this.myproject.filter(o => o.Status == 'Win').length
+			    }, {
+			        label: "Lost",
+			        data: this.myproject.filter(o => o.Status == 'Lost').length
+			    },{
+			        label: "Cancel",
+			        data: this.myproject.filter(o => o.Status == 'Cancel').length
+			    }];
+
+			    var plotObj = $.plot($("#flot-pie-project"), data, {
+			        series: {
+			            pie: {
+			                show: true
+			            }
+			        },
+			        grid: {
+			            hoverable: true
+			        },
+			        tooltip: true,
+			        tooltipOpts: {
+			            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+			            shifts: {
+			                x: 20,
+			                y: 0
+			            },
+			            defaultTheme: false
+			        }
+			    }); 
+		  },
+		  
+		  createg:function(){
+			  var data = [{
+			        label: "Open",
+			        data: this.mytask.filter(o => o.Job_status == 'Open').length,
+			        color: "#030303",
+			    }, {
+			        label: "Progress",
+			        data: this.mytask.filter(o => o.Job_status == 'On Progress').length,
+			        color: "#aababa",
+			    }, {
+			        label: "Completed",
+			        data: this.mytask.filter(o => o.Job_status == 'Completed').length,
+			        color: "#a9d7c0",
+			    }, {
+			        label: "Cancel",
+			        data: this.mytask.filter(o => o.Job_status == 'Cancel').length,
+			        color: "#aab3f4",
+			    }];
+
+			    var plotObj = $.plot($("#flot-pie-chart"), data, {
+			        series: {
+			            pie: {
+			                show: true
+			            }
+			        },
+			        grid: {
+			            hoverable: true
+			        },
+			        tooltip: true,
+			        tooltipOpts: {
+			            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+			            shifts: {
+			                x: 20,
+			                y: 0
+			            },
+			            defaultTheme: false
+			        }
+			    }); 
+			    var barOptions = {
+			            series: {
+			                bars: {
+			                    show: true,
+			                    barWidth: 0.6,
+			                    fill: true,
+			                    fillColor: {
+			                        colors: [{
+			                            opacity: 0.8
+			                        }, {
+			                            opacity: 0.8
+			                        }]
+			                    }
+			                }
+			            },
+			            xaxis: {
+			                tickDecimals: 0
+			            },
+			            colors: ["#1ab394"],
+			            grid: {
+			                color: "#999999",
+			                hoverable: true,
+			                clickable: true,
+			                tickColor: "#D4D4D4",
+			                borderWidth:0
+			            },
+			            legend: {
+			                show: false
+			            },
+			            tooltip: true,
+			            tooltipOpts: {
+			                content: "x: %x, y: %y"
+			            }
+			        };
+			        var barData = {
+			            label: "bar",
+			            data: [
+			            	[1, this.bar[0]],
+			                [2, this.bar[1]],
+			                [3, this.bar[2]],
+			                [4, this.bar[3]],
+			                [5, this.bar[4]],
+			                [6, this.bar[5]],
+			                [7, this.bar[6]],
+			                [8, this.bar[7]],
+			                [9, this.bar[8]],
+			                [10, this.bar[9]],
+			                [11, this.bar[10]],
+			                [12, this.bar[11]]
+			            ]
+			        };
+			        $.plot($("#flot-bar-chart"), [barData], barOptions);
+		  }
+	  },
+	  mounted: function () {
+		  this.gettask();
+		  this.getproject();
+		  
+	  },
+	  template: `
+	  <div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">                   	
+                        <span class="label label-success pull-right">All</span>
+                        <h5>Task</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{mytask.length}}</h1>
+                        <div class="stat-percent font-bold text-success">{{newtask}} <i class="fa fa-bolt"></i></div>
+                        <small>New(This month)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">All</span>
+                        <h5>Project</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{myproject.length}}</h1>
+                        <div class="stat-percent font-bold text-info"> {{newproj}}  <i class="fa fa-bolt"></i></div>
+                        <small>New(This month)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">All</span>
+                        <h5>Task</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{mytask.filter(o => o.Job_status == 'Open').length}}</h1>
+                                <small>Open</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{mytask.filter(o => o.Job_status == 'On Progress').length}}</h1>
+                                <small>Progress</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{mytask.filter(o => o.Job_status == 'Completed').length}}</h1>
+                                <small>Completed</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{mytask.filter(o => o.Job_status == 'Cancel').length}}</h1>
+                                <small>Cancel</small>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Project</h5>
+                        <div class="ibox-tools">
+                            <span class="label label-primary">All</span>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{myproject.filter(o => o.Status == 'Open').length}}</h1>
+                                <small>Open</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{myproject.filter(o => o.Status == 'Progress').length}}</h1>
+                                <small>Progress</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{myproject.filter(o => o.Status == 'Win').length}}</h1>
+                                <small>Win</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h1 class="no-margins">{{myproject.filter(o => o.Status == 'Lost').length}}</h1>
+                                <small>Lost</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div>
+		  					<span class="pull-right text-right">
+		  						<small>All Task : <strong>This year</strong></small>
+		  					</span>
+                            <h3 class="font-bold no-margins">
+                                Task
+                            </h3>
+                            <small>Job compare by month</small>
+                        </div>
+
+                        <div class="m-t-sm">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div>
+                                        <div class="flot-chart">
+			                                <div class="flot-chart">
+                                				<div class="flot-chart-content" style="width:400px;height:200px" id="flot-bar-chart"></div>
+                            				</div>
+			                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul class="stat-list m-t-lg">
+                                        <li>
+                                           <div class="flot-chart">
+				                                <div class="flot-chart-pie-content" id="flot-pie-chart" style="width:200px;height:200px" ></div>
+				                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="m-t-md">
+                            <small class="pull-right">
+                                <i class="fa fa-clock-o"> </i>
+                                Update on 
+                            </small>
+                            <small>
+                                <strong>Job compare </strong> by month
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right"> All </span>
+                        <h5>Project</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="flot-chart">
+		  						<div class="flot-chart-pie-content" id="flot-pie-project" style="width:200px;height:200px" ></div>
+		  					</div>
+		  				</div>                    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+	</div>
+	  `,
+	})
+
 /*===================================================================================================*/
 Vue.component('delete-project', { 
 	 props: ['dataentry','uid'],
@@ -355,214 +785,6 @@ Vue.component('project', {
 	})
 
 
-/*====================================================================================================*/
-Vue.component('dashboard', { 
-	 // props: ['source'],
-	 
-	 data: function () {
-	    return {
-	    	
-	    }
-	  },
-	  methods: {
-		  
-	  },
-	  mounted: function () {
-		  
-	  },
-	  template: `
-	  <div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-success pull-right">Monthly</span>
-                        <h5>Views</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">386,200</h1>
-                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                        <small>Total views</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-info pull-right">Annual</span>
-                        <h5>Orders</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">80,800</h1>
-                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                        <small>New orders</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-primary pull-right">Today</span>
-                        <h5>Vistits</h5>
-                    </div>
-                    <div class="ibox-content">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h1 class="no-margins">$ 406,420</h1>
-                                <div class="font-bold text-navy">44% <i class="fa fa-level-up"></i> <small>Rapid pace</small></div>
-                            </div>
-                            <div class="col-md-6">
-                                <h1 class="no-margins">206,120</h1>
-                                <div class="font-bold text-navy">22% <i class="fa fa-level-up"></i> <small>Slow pace</small></div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Monthly income</h5>
-                        <div class="ibox-tools">
-                            <span class="label label-primary">Updated 12.2015</span>
-                        </div>
-                    </div>
-                    <div class="ibox-content no-padding">
-                        <div class="flot-chart m-t-lg" style="height: 55px;">
-                            <div class="flot-chart-content" id="flot-chart1"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <div>
-                                        <span class="pull-right text-right">
-                                        <small>Average value of sales in the past month in: <strong>United states</strong></small>
-                                            <br/>
-                                            All sales: 162,862
-                                        </span>
-                            <h3 class="font-bold no-margins">
-                                Half-year revenue margin
-                            </h3>
-                            <small>Sales marketing.</small>
-                        </div>
-
-                        <div class="m-t-sm">
-
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div>
-                                        <canvas id="lineChart" height="114"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul class="stat-list m-t-lg">
-                                        <li>
-                                            <h2 class="no-margins">2,346</h2>
-                                            <small>Total orders in period</small>
-                                            <div class="progress progress-mini">
-                                                <div class="progress-bar" style="width: 48%;"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">4,422</h2>
-                                            <small>Orders in last month</small>
-                                            <div class="progress progress-mini">
-                                                <div class="progress-bar" style="width: 60%;"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="m-t-md">
-                            <small class="pull-right">
-                                <i class="fa fa-clock-o"> </i>
-                                Update on 16.07.2015
-                            </small>
-                            <small>
-                                <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.
-                            </small>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-warning pull-right">Data has changed</span>
-                        <h5>User activity</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <small class="stats-label">Pages / Visit</small>
-                                <h4>236 321.80</h4>
-                            </div>
-
-                            <div class="col-xs-4">
-                                <small class="stats-label">% New Visits</small>
-                                <h4>46.11%</h4>
-                            </div>
-                            <div class="col-xs-4">
-                                <small class="stats-label">Last week</small>
-                                <h4>432.021</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <small class="stats-label">Pages / Visit</small>
-                                <h4>643 321.10</h4>
-                            </div>
-
-                            <div class="col-xs-4">
-                                <small class="stats-label">% New Visits</small>
-                                <h4>92.43%</h4>
-                            </div>
-                            <div class="col-xs-4">
-                                <small class="stats-label">Last week</small>
-                                <h4>564.554</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <small class="stats-label">Pages / Visit</small>
-                                <h4>436 547.20</h4>
-                            </div>
-
-                            <div class="col-xs-4">
-                                <small class="stats-label">% New Visits</small>
-                                <h4>150.23%</h4>
-                            </div>
-                            <div class="col-xs-4">
-                                <small class="stats-label">Last week</small>
-                                <h4>124.990</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-	</div>
-	  `,
-	})
 
 /*====================================================================================================*/
 
