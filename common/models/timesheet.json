@@ -23,7 +23,7 @@
 			]
 		},
 		"UID": {
-			"type": "number",
+			"type": "string",
 			"required": true
 		},
 		"Job_Header": {
